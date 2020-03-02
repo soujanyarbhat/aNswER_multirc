@@ -63,3 +63,7 @@ Self-attention: sometimes called intra-attention, is an attention mechanism rela
 Self-attention vs multi head attention?
 
 Calculating the correlation for each input, target word pair is computationally expensive when there is larger corpus. Transformers accelerate such training.
+
+TRANSFORMERS:
+1. https://youtu.be/5vcj8kSwBCY [Stanford lecture]
+2. http://jalammar.github.io/illustrated-transformer/ [Blog suggested by Prof Baral]
