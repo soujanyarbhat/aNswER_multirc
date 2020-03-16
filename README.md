@@ -11,7 +11,11 @@ a. Google T5
 b. Facebook RoBERTa
 c. Google BERT
 
-Progress Track -
+- ISSUES:
+
+Setting pre-train tasks for MultiRC target task 
+
+PROGRESS TRACK -
 
 March 16: Tuned baseline model jiant to execute task 'MultiRC'
 
@@ -49,10 +53,6 @@ target_tasks="multirc"
 - Run task:
 
 python main.py --config_file jiant/config/multirc.conf
-
-- ISSUES:
-
-Setting pre-train tasks for MultiRC target task 
 
 REPORT (WIP): 
 
