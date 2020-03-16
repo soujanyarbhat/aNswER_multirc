@@ -13,7 +13,8 @@ c. Google BERT
 
 - ISSUES:
 
-Setting pre-train tasks for MultiRC target task 
+TBD
+
 
 PROGRESS TRACK -
 
@@ -49,6 +50,8 @@ source user_config.sh
 pretrain_tasks="multirc" (TBD)
 
 target_tasks="multirc"
+
+- Allows same pre/target tasks > jiant/config/defaults.conf : allow_reuse_of_pretraining_parameters = 1
 
 - Run task:
 

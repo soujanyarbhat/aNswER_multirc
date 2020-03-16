@@ -22,11 +22,11 @@
 # export JIANT_DATA_DIR=/Users/Bowman/Drive/JSALT/jiant/glue_data
 
 # The base directory for model output.
-export JIANT_PROJECT_PREFIX=/home/varun/PycharmProjects/jiant
+export JIANT_PROJECT_PREFIX=/home/varun/PycharmProjects/multi_rc/baseline
 
 # Base directory in which to look for raw data subdirectories. This
 # could be the glue_data directory created by download_glue_data.py.
-export JIANT_DATA_DIR=/home/varun/PycharmProjects/jiant/data
+export JIANT_DATA_DIR=/home/varun/PycharmProjects/multi_rc/baseline/data
 
 # A word embeddings file in GloVe/fastText format. Not used when using
 # ELMo, GPT, or BERT. To use more than one different set of embeddings
