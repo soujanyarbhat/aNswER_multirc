@@ -11,9 +11,50 @@ a. Google T5
 b. Facebook RoBERTa
 c. Google BERT
 
-Current Task:
-To download the dataset and baseline model.
-Execute the model and check results.
+Progress Track -
 
-Report (WIP): https://www.overleaf.com/read/gxckmzynvxnk
+March 16: Tuned baseline model jiant to execute task 'MultiRC'
+
+Steps:
+
+- Setup environment: conda env create -f environment.yml
+
+- Activate environmentt: conda activate jiant
+
+- Install remaining packages:
+pip install torchvision 
+pip install allennlp
+pip install jsondiff
+pip install -U sacremoses
+pip install pyhocon
+pip install transformers
+pip install python-Levenshtein
+
+- Download dataset: python scripts/download_superglue_data.py --data_dir data --tasks MultiRC
+
+- Setup environment variables > cp user_config_template.sh user_config.sh:
+
+$JIANT_PROJECT_PREFIX=/home/varun/PycharmProjects/jiant
+ 
+$JIANT_DATA_DIR=/home/varun/PycharmProjects/jiant/data
+
+source user_config.sh
+
+- Configuring environment > cp jiant/config/demo.conf jiant/config/multirc.conf:
+
+pretrain_tasks="multirc" (TBD)
+
+target_tasks="multirc"
+
+- Run task:
+
+python main.py --config_file jiant/config/multirc.conf
+
+- ISSUES:
+
+Setting pre-train tasks for MultiRC target task 
+
+REPORT (WIP): 
+
+https://www.overleaf.com/read/gxckmzynvxnk
 
