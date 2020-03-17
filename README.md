@@ -18,6 +18,8 @@ TBD
 
 PROGRESS TRACK -
 
+Complete overview of JIANT: https://arxiv.org/pdf/2003.02249.pdf 
+
 March 16: Tuned baseline model jiant to execute task 'MultiRC'
 
 Steps:
@@ -50,6 +52,8 @@ source user_config.sh
 pretrain_tasks="multirc" (TBD)
 
 target_tasks="multirc"
+
+input_module = bert-base-cased
 
 - Allows same pre/target tasks > jiant/config/defaults.conf : allow_reuse_of_pretraining_parameters = 1
 
