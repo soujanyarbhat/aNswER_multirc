@@ -64,6 +64,7 @@ python main.py --config_file jiant/config/multirc.conf
 To Visualize logs:
 
 pip install tensorboard
+
 tensorboard --logdir=${LOG_DIR} 
 
 REPORT (WIP): 
