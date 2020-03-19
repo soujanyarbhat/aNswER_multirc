@@ -1,1 +1,4 @@
 mutlirc_bert_cased_run	micro_avg: 0.304, macro_avg: 0.304, multirc_ans_f1: 0.599, multirc_qst_f1: 0.591, multirc_em: 0.008, multirc_avg: 0.304
+mutlirc_bert_cased_run1	micro_avg: 0.002, macro_avg: 0.002, multirc_ans_f1: 0.000, multirc_qst_f1: 0.000, multirc_em: 0.003, multirc_avg: 0.002
+mutlirc_bert_cased_run2	micro_avg: 0.304, macro_avg: 0.304, multirc_ans_f1: 0.599, multirc_qst_f1: 0.591, multirc_em: 0.008, multirc_avg: 0.304
+mutlirc_bert_cased_run3	micro_avg: 0.002, macro_avg: 0.002, multirc_ans_f1: 0.000, multirc_qst_f1: 0.000, multirc_em: 0.003, multirc_avg: 0.002
