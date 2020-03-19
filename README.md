@@ -61,7 +61,14 @@ input_module = bert-base-cased
 
 python main.py --config_file jiant/config/multirc.conf
 
+To Visualize logs:
+
+pip install tensorboard
+tensorboard --logdir=${LOG_DIR} 
+
 REPORT (WIP): 
 
 https://www.overleaf.com/read/gxckmzynvxnk
+
+
 
