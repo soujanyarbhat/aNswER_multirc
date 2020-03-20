@@ -1,0 +1,1432 @@
+03/16 06:38:01 PM: Git branch: HEAD
+03/16 06:38:01 PM: Git SHA: f4a155efabb900c8b3da314cca47384795f97ab6
+03/16 06:38:02 PM: Parsed args: 
+{
+  "batch_size": 8,
+  "classifier_hid_dim": 32,
+  "d_word": 50,
+  "exp_dir": "/home/soujanya/Projects/jiant/jiant-baseline-bert/",
+  "exp_name": "jiant-baseline-bert",
+  "input_module": "bert-base-cased",
+  "load_model": 0,
+  "local_log_path": "/home/soujanya/Projects/jiant/jiant-baseline-bert/mtl-multirc/log.log",
+  "lr": 0.0003,
+  "max_seq_len": 10,
+  "max_vals": 10,
+  "max_word_v_size": 1000,
+  "pair_attn": 0,
+  "pretrain_tasks": "multirc",
+  "random_seed": 42,
+  "remote_log_name": "jiant-baseline-bert__mtl-multirc",
+  "run_dir": "/home/soujanya/Projects/jiant/jiant-baseline-bert/mtl-multirc",
+  "run_name": "mtl-multirc",
+  "sent_enc": "bow",
+  "skip_embs": 0,
+  "target_tasks": "multirc",
+  "target_train_max_vals": 10,
+  "target_train_val_interval": 10,
+  "val_interval": 50
+}
+03/16 06:38:02 PM: Saved config to /home/soujanya/Projects/jiant/jiant-baseline-bert/mtl-multirc/params.conf
+03/16 06:38:02 PM: Using random seed 42
+03/16 06:38:02 PM: Loading tasks...
+03/16 06:38:02 PM: Writing pre-preprocessed tasks to /home/soujanya/Projects/jiant/jiant-baseline-bert/
+03/16 06:38:02 PM: 	Creating task multirc from scratch.
+03/16 06:38:02 PM: 	Task 'multirc': |train|=27243 |val|=4848 |test|=9693
+03/16 06:38:02 PM: 	Finished loading tasks: multirc.
+03/16 06:38:02 PM: 	Building vocab from scratch.
+03/16 06:38:02 PM: 	Counting units for task multirc.
+03/16 06:38:02 PM: 	Loading Tokenizer bert-base-cased
+03/16 06:38:02 PM: https://s3.amazonaws.com/models.huggingface.co/bert/bert-base-cased-vocab.txt not found in cache or force_download set to True, downloading to /tmp/tmpv2zahm3z
+03/16 06:38:03 PM: copying /tmp/tmpv2zahm3z to cache at /home/soujanya/.cache/torch/transformers/5e8a2b4893d13790ed4150ca1906be5f7a03d6c4ddf62296c383f6db42814db2.e13dbb970cb325137104fb2e5f36fe865f27746c6b526f6352861b1980eb80b1
+03/16 06:38:03 PM: creating metadata file for /home/soujanya/.cache/torch/transformers/5e8a2b4893d13790ed4150ca1906be5f7a03d6c4ddf62296c383f6db42814db2.e13dbb970cb325137104fb2e5f36fe865f27746c6b526f6352861b1980eb80b1
+03/16 06:38:03 PM: removing temp file /tmp/tmpv2zahm3z
+03/16 06:38:03 PM: loading file https://s3.amazonaws.com/models.huggingface.co/bert/bert-base-cased-vocab.txt from cache at /home/soujanya/.cache/torch/transformers/5e8a2b4893d13790ed4150ca1906be5f7a03d6c4ddf62296c383f6db42814db2.e13dbb970cb325137104fb2e5f36fe865f27746c6b526f6352861b1980eb80b1
+03/16 06:38:08 PM: loading file https://s3.amazonaws.com/models.huggingface.co/bert/bert-base-cased-vocab.txt from cache at /home/soujanya/.cache/torch/transformers/5e8a2b4893d13790ed4150ca1906be5f7a03d6c4ddf62296c383f6db42814db2.e13dbb970cb325137104fb2e5f36fe865f27746c6b526f6352861b1980eb80b1
+03/16 06:38:08 PM: Added transformers vocab (bert-base-cased): 28996 tokens
+03/16 06:38:08 PM: 	Saved vocab to /home/soujanya/Projects/jiant/jiant-baseline-bert/vocab
+03/16 06:38:08 PM: Loading token dictionary from /home/soujanya/Projects/jiant/jiant-baseline-bert/vocab.
+03/16 06:38:08 PM: 	Loaded vocab from /home/soujanya/Projects/jiant/jiant-baseline-bert/vocab
+03/16 06:38:08 PM: 	Vocab namespace chars: size 100
+03/16 06:38:08 PM: 	Vocab namespace bert_cased: size 28998
+03/16 06:38:08 PM: 	Vocab namespace tokens: size 1004
+03/16 06:38:08 PM: 	Finished building vocab.
+03/16 06:38:08 PM: 	Task multirc (train): Indexing from scratch.
+03/16 06:38:15 PM: 	Task multirc (train): Saved 27243 instances to /home/soujanya/Projects/jiant/jiant-baseline-bert/preproc/multirc__train_data
+03/16 06:38:15 PM: 	Task multirc (val): Indexing from scratch.
+03/16 06:38:16 PM: 	Task multirc (val): Saved 4848 instances to /home/soujanya/Projects/jiant/jiant-baseline-bert/preproc/multirc__val_data
+03/16 06:38:16 PM: 	Task multirc (test): Indexing from scratch.
+03/16 06:38:19 PM: 	Task multirc (test): Saved 9693 instances to /home/soujanya/Projects/jiant/jiant-baseline-bert/preproc/multirc__test_data
+03/16 06:38:19 PM: 	Finished indexing tasks
+03/16 06:38:19 PM: 	Creating trimmed pretraining-only version of multirc train.
+03/16 06:38:19 PM: 	Creating trimmed target-only version of multirc train.
+03/16 06:38:19 PM: 	  Training on multirc
+03/16 06:38:19 PM: 	  Evaluating on multirc
+03/16 06:38:19 PM: 	Finished loading tasks in 16.888s
+03/16 06:38:19 PM: 	 Tasks: ['multirc']
+03/16 06:38:19 PM: Building model...
+03/16 06:38:19 PM: Using BERT model (bert-base-cased).
+03/16 06:38:19 PM: https://s3.amazonaws.com/models.huggingface.co/bert/bert-base-cased-config.json not found in cache or force_download set to True, downloading to /tmp/tmp_o573bsn
+03/16 06:38:20 PM: copying /tmp/tmp_o573bsn to cache at /home/soujanya/Projects/jiant/jiant-baseline-bert/transformers_cache/b945b69218e98b3e2c95acf911789741307dec43c698d35fad11c1ae28bda352.3d5adf10d3445c36ce131f4c6416aa62e9b58e1af56b97664773f4858a46286e
+03/16 06:38:20 PM: creating metadata file for /home/soujanya/Projects/jiant/jiant-baseline-bert/transformers_cache/b945b69218e98b3e2c95acf911789741307dec43c698d35fad11c1ae28bda352.3d5adf10d3445c36ce131f4c6416aa62e9b58e1af56b97664773f4858a46286e
+03/16 06:38:20 PM: removing temp file /tmp/tmp_o573bsn
+03/16 06:38:20 PM: loading configuration file https://s3.amazonaws.com/models.huggingface.co/bert/bert-base-cased-config.json from cache at /home/soujanya/Projects/jiant/jiant-baseline-bert/transformers_cache/b945b69218e98b3e2c95acf911789741307dec43c698d35fad11c1ae28bda352.3d5adf10d3445c36ce131f4c6416aa62e9b58e1af56b97664773f4858a46286e
+03/16 06:38:20 PM: Model config {
+  "architectures": [
+    "BertForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "finetuning_task": null,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "id2label": {
+    "0": "LABEL_0",
+    "1": "LABEL_1"
+  },
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "is_decoder": false,
+  "label2id": {
+    "LABEL_0": 0,
+    "LABEL_1": 1
+  },
+  "layer_norm_eps": 1e-12,
+  "max_position_embeddings": 512,
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "num_labels": 2,
+  "output_attentions": false,
+  "output_hidden_states": true,
+  "output_past": true,
+  "pruned_heads": {},
+  "torchscript": false,
+  "type_vocab_size": 2,
+  "use_bfloat16": false,
+  "vocab_size": 28996
+}
+
+03/16 06:38:20 PM: https://s3.amazonaws.com/models.huggingface.co/bert/bert-base-cased-pytorch_model.bin not found in cache or force_download set to True, downloading to /tmp/tmp5c9vpqsm
+03/16 06:47:00 PM: copying /tmp/tmp5c9vpqsm to cache at /home/soujanya/Projects/jiant/jiant-baseline-bert/transformers_cache/35d8b9d36faaf46728a0192d82bf7d00137490cd6074e8500778afed552a67e5.3fadbea36527ae472139fe84cddaa65454d7429f12d543d80bfc3ad70de55ac2
+03/16 06:47:00 PM: creating metadata file for /home/soujanya/Projects/jiant/jiant-baseline-bert/transformers_cache/35d8b9d36faaf46728a0192d82bf7d00137490cd6074e8500778afed552a67e5.3fadbea36527ae472139fe84cddaa65454d7429f12d543d80bfc3ad70de55ac2
+03/16 06:47:00 PM: removing temp file /tmp/tmp5c9vpqsm
+03/16 06:47:00 PM: loading weights file https://s3.amazonaws.com/models.huggingface.co/bert/bert-base-cased-pytorch_model.bin from cache at /home/soujanya/Projects/jiant/jiant-baseline-bert/transformers_cache/35d8b9d36faaf46728a0192d82bf7d00137490cd6074e8500778afed552a67e5.3fadbea36527ae472139fe84cddaa65454d7429f12d543d80bfc3ad70de55ac2
+03/16 06:47:02 PM: https://s3.amazonaws.com/models.huggingface.co/bert/bert-base-cased-vocab.txt not found in cache or force_download set to True, downloading to /tmp/tmpw3kpbu6o
+03/16 06:47:03 PM: copying /tmp/tmpw3kpbu6o to cache at /home/soujanya/Projects/jiant/jiant-baseline-bert/transformers_cache/5e8a2b4893d13790ed4150ca1906be5f7a03d6c4ddf62296c383f6db42814db2.e13dbb970cb325137104fb2e5f36fe865f27746c6b526f6352861b1980eb80b1
+03/16 06:47:03 PM: creating metadata file for /home/soujanya/Projects/jiant/jiant-baseline-bert/transformers_cache/5e8a2b4893d13790ed4150ca1906be5f7a03d6c4ddf62296c383f6db42814db2.e13dbb970cb325137104fb2e5f36fe865f27746c6b526f6352861b1980eb80b1
+03/16 06:47:03 PM: removing temp file /tmp/tmpw3kpbu6o
+03/16 06:47:03 PM: loading file https://s3.amazonaws.com/models.huggingface.co/bert/bert-base-cased-vocab.txt from cache at /home/soujanya/Projects/jiant/jiant-baseline-bert/transformers_cache/5e8a2b4893d13790ed4150ca1906be5f7a03d6c4ddf62296c383f6db42814db2.e13dbb970cb325137104fb2e5f36fe865f27746c6b526f6352861b1980eb80b1
+03/16 06:47:03 PM: Initializing parameters
+03/16 06:47:03 PM: Done initializing parameters; the following parameters are using their default initialization from their code
+03/16 06:47:03 PM:    _text_field_embedder.model.embeddings.LayerNorm.bias
+03/16 06:47:03 PM:    _text_field_embedder.model.embeddings.LayerNorm.weight
+03/16 06:47:03 PM:    _text_field_embedder.model.embeddings.position_embeddings.weight
+03/16 06:47:03 PM:    _text_field_embedder.model.embeddings.token_type_embeddings.weight
+03/16 06:47:03 PM:    _text_field_embedder.model.embeddings.word_embeddings.weight
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.0.attention.output.LayerNorm.bias
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.0.attention.output.LayerNorm.weight
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.0.attention.output.dense.bias
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.0.attention.output.dense.weight
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.0.attention.self.key.bias
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.0.attention.self.key.weight
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.0.attention.self.query.bias
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.0.attention.self.query.weight
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.0.attention.self.value.bias
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.0.attention.self.value.weight
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.0.intermediate.dense.bias
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.0.intermediate.dense.weight
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.0.output.LayerNorm.bias
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.0.output.LayerNorm.weight
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.0.output.dense.bias
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.0.output.dense.weight
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.1.attention.output.LayerNorm.bias
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.1.attention.output.LayerNorm.weight
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.1.attention.output.dense.bias
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.1.attention.output.dense.weight
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.1.attention.self.key.bias
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.1.attention.self.key.weight
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.1.attention.self.query.bias
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.1.attention.self.query.weight
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.1.attention.self.value.bias
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.1.attention.self.value.weight
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.1.intermediate.dense.bias
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.1.intermediate.dense.weight
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.1.output.LayerNorm.bias
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.1.output.LayerNorm.weight
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.1.output.dense.bias
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.1.output.dense.weight
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.10.attention.output.LayerNorm.bias
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.10.attention.output.LayerNorm.weight
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.10.attention.output.dense.bias
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.10.attention.output.dense.weight
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.10.attention.self.key.bias
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.10.attention.self.key.weight
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.10.attention.self.query.bias
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.10.attention.self.query.weight
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.10.attention.self.value.bias
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.10.attention.self.value.weight
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.10.intermediate.dense.bias
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.10.intermediate.dense.weight
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.10.output.LayerNorm.bias
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.10.output.LayerNorm.weight
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.10.output.dense.bias
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.10.output.dense.weight
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.11.attention.output.LayerNorm.bias
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.11.attention.output.LayerNorm.weight
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.11.attention.output.dense.bias
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.11.attention.output.dense.weight
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.11.attention.self.key.bias
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.11.attention.self.key.weight
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.11.attention.self.query.bias
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.11.attention.self.query.weight
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.11.attention.self.value.bias
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.11.attention.self.value.weight
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.11.intermediate.dense.bias
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.11.intermediate.dense.weight
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.11.output.LayerNorm.bias
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.11.output.LayerNorm.weight
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.11.output.dense.bias
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.11.output.dense.weight
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.2.attention.output.LayerNorm.bias
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.2.attention.output.LayerNorm.weight
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.2.attention.output.dense.bias
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.2.attention.output.dense.weight
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.2.attention.self.key.bias
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.2.attention.self.key.weight
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.2.attention.self.query.bias
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.2.attention.self.query.weight
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.2.attention.self.value.bias
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.2.attention.self.value.weight
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.2.intermediate.dense.bias
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.2.intermediate.dense.weight
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.2.output.LayerNorm.bias
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.2.output.LayerNorm.weight
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.2.output.dense.bias
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.2.output.dense.weight
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.3.attention.output.LayerNorm.bias
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.3.attention.output.LayerNorm.weight
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.3.attention.output.dense.bias
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.3.attention.output.dense.weight
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.3.attention.self.key.bias
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.3.attention.self.key.weight
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.3.attention.self.query.bias
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.3.attention.self.query.weight
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.3.attention.self.value.bias
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.3.attention.self.value.weight
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.3.intermediate.dense.bias
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.3.intermediate.dense.weight
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.3.output.LayerNorm.bias
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.3.output.LayerNorm.weight
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.3.output.dense.bias
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.3.output.dense.weight
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.4.attention.output.LayerNorm.bias
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.4.attention.output.LayerNorm.weight
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.4.attention.output.dense.bias
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.4.attention.output.dense.weight
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.4.attention.self.key.bias
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.4.attention.self.key.weight
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.4.attention.self.query.bias
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.4.attention.self.query.weight
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.4.attention.self.value.bias
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.4.attention.self.value.weight
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.4.intermediate.dense.bias
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.4.intermediate.dense.weight
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.4.output.LayerNorm.bias
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.4.output.LayerNorm.weight
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.4.output.dense.bias
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.4.output.dense.weight
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.5.attention.output.LayerNorm.bias
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.5.attention.output.LayerNorm.weight
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.5.attention.output.dense.bias
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.5.attention.output.dense.weight
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.5.attention.self.key.bias
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.5.attention.self.key.weight
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.5.attention.self.query.bias
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.5.attention.self.query.weight
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.5.attention.self.value.bias
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.5.attention.self.value.weight
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.5.intermediate.dense.bias
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.5.intermediate.dense.weight
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.5.output.LayerNorm.bias
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.5.output.LayerNorm.weight
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.5.output.dense.bias
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.5.output.dense.weight
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.6.attention.output.LayerNorm.bias
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.6.attention.output.LayerNorm.weight
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.6.attention.output.dense.bias
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.6.attention.output.dense.weight
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.6.attention.self.key.bias
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.6.attention.self.key.weight
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.6.attention.self.query.bias
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.6.attention.self.query.weight
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.6.attention.self.value.bias
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.6.attention.self.value.weight
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.6.intermediate.dense.bias
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.6.intermediate.dense.weight
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.6.output.LayerNorm.bias
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.6.output.LayerNorm.weight
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.6.output.dense.bias
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.6.output.dense.weight
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.7.attention.output.LayerNorm.bias
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.7.attention.output.LayerNorm.weight
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.7.attention.output.dense.bias
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.7.attention.output.dense.weight
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.7.attention.self.key.bias
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.7.attention.self.key.weight
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.7.attention.self.query.bias
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.7.attention.self.query.weight
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.7.attention.self.value.bias
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.7.attention.self.value.weight
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.7.intermediate.dense.bias
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.7.intermediate.dense.weight
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.7.output.LayerNorm.bias
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.7.output.LayerNorm.weight
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.7.output.dense.bias
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.7.output.dense.weight
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.8.attention.output.LayerNorm.bias
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.8.attention.output.LayerNorm.weight
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.8.attention.output.dense.bias
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.8.attention.output.dense.weight
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.8.attention.self.key.bias
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.8.attention.self.key.weight
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.8.attention.self.query.bias
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.8.attention.self.query.weight
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.8.attention.self.value.bias
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.8.attention.self.value.weight
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.8.intermediate.dense.bias
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.8.intermediate.dense.weight
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.8.output.LayerNorm.bias
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.8.output.LayerNorm.weight
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.8.output.dense.bias
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.8.output.dense.weight
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.9.attention.output.LayerNorm.bias
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.9.attention.output.LayerNorm.weight
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.9.attention.output.dense.bias
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.9.attention.output.dense.weight
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.9.attention.self.key.bias
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.9.attention.self.key.weight
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.9.attention.self.query.bias
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.9.attention.self.query.weight
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.9.attention.self.value.bias
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.9.attention.self.value.weight
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.9.intermediate.dense.bias
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.9.intermediate.dense.weight
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.9.output.LayerNorm.bias
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.9.output.LayerNorm.weight
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.9.output.dense.bias
+03/16 06:47:03 PM:    _text_field_embedder.model.encoder.layer.9.output.dense.weight
+03/16 06:47:03 PM:    _text_field_embedder.model.pooler.dense.bias
+03/16 06:47:03 PM:    _text_field_embedder.model.pooler.dense.weight
+03/16 06:47:03 PM: 	Task 'multirc' params: {
+  "cls_type": "mlp",
+  "d_hid": 32,
+  "pool_type": "max",
+  "d_proj": 512,
+  "shared_pair_attn": 0,
+  "attn": 0,
+  "d_hid_attn": 512,
+  "dropout": 0.2,
+  "cls_loss_fn": "softmax",
+  "cls_span_pooling": "attn",
+  "edgeprobe_cnn_context": 0,
+  "edgeprobe_symmetric": 0,
+  "use_classifier": "multirc"
+}
+03/16 06:47:03 PM: Model specification:
+03/16 06:47:03 PM: MultiTaskModel(
+  (sent_encoder): BoWSentEncoder(
+    (_text_field_embedder): BertEmbedderModule(
+      (model): BertModel(
+        (embeddings): BertEmbeddings(
+          (word_embeddings): Embedding(28996, 768, padding_idx=0)
+          (position_embeddings): Embedding(512, 768)
+          (token_type_embeddings): Embedding(2, 768)
+          (LayerNorm): LayerNorm(torch.Size([768]), eps=1e-12, elementwise_affine=True)
+          (dropout): Dropout(p=0.1)
+        )
+        (encoder): BertEncoder(
+          (layer): ModuleList(
+            (0): BertLayer(
+              (attention): BertAttention(
+                (self): BertSelfAttention(
+                  (query): Linear(in_features=768, out_features=768, bias=True)
+                  (key): Linear(in_features=768, out_features=768, bias=True)
+                  (value): Linear(in_features=768, out_features=768, bias=True)
+                  (dropout): Dropout(p=0.1)
+                )
+                (output): BertSelfOutput(
+                  (dense): Linear(in_features=768, out_features=768, bias=True)
+                  (LayerNorm): LayerNorm(torch.Size([768]), eps=1e-12, elementwise_affine=True)
+                  (dropout): Dropout(p=0.1)
+                )
+              )
+              (intermediate): BertIntermediate(
+                (dense): Linear(in_features=768, out_features=3072, bias=True)
+              )
+              (output): BertOutput(
+                (dense): Linear(in_features=3072, out_features=768, bias=True)
+                (LayerNorm): LayerNorm(torch.Size([768]), eps=1e-12, elementwise_affine=True)
+                (dropout): Dropout(p=0.1)
+              )
+            )
+            (1): BertLayer(
+              (attention): BertAttention(
+                (self): BertSelfAttention(
+                  (query): Linear(in_features=768, out_features=768, bias=True)
+                  (key): Linear(in_features=768, out_features=768, bias=True)
+                  (value): Linear(in_features=768, out_features=768, bias=True)
+                  (dropout): Dropout(p=0.1)
+                )
+                (output): BertSelfOutput(
+                  (dense): Linear(in_features=768, out_features=768, bias=True)
+                  (LayerNorm): LayerNorm(torch.Size([768]), eps=1e-12, elementwise_affine=True)
+                  (dropout): Dropout(p=0.1)
+                )
+              )
+              (intermediate): BertIntermediate(
+                (dense): Linear(in_features=768, out_features=3072, bias=True)
+              )
+              (output): BertOutput(
+                (dense): Linear(in_features=3072, out_features=768, bias=True)
+                (LayerNorm): LayerNorm(torch.Size([768]), eps=1e-12, elementwise_affine=True)
+                (dropout): Dropout(p=0.1)
+              )
+            )
+            (2): BertLayer(
+              (attention): BertAttention(
+                (self): BertSelfAttention(
+                  (query): Linear(in_features=768, out_features=768, bias=True)
+                  (key): Linear(in_features=768, out_features=768, bias=True)
+                  (value): Linear(in_features=768, out_features=768, bias=True)
+                  (dropout): Dropout(p=0.1)
+                )
+                (output): BertSelfOutput(
+                  (dense): Linear(in_features=768, out_features=768, bias=True)
+                  (LayerNorm): LayerNorm(torch.Size([768]), eps=1e-12, elementwise_affine=True)
+                  (dropout): Dropout(p=0.1)
+                )
+              )
+              (intermediate): BertIntermediate(
+                (dense): Linear(in_features=768, out_features=3072, bias=True)
+              )
+              (output): BertOutput(
+                (dense): Linear(in_features=3072, out_features=768, bias=True)
+                (LayerNorm): LayerNorm(torch.Size([768]), eps=1e-12, elementwise_affine=True)
+                (dropout): Dropout(p=0.1)
+              )
+            )
+            (3): BertLayer(
+              (attention): BertAttention(
+                (self): BertSelfAttention(
+                  (query): Linear(in_features=768, out_features=768, bias=True)
+                  (key): Linear(in_features=768, out_features=768, bias=True)
+                  (value): Linear(in_features=768, out_features=768, bias=True)
+                  (dropout): Dropout(p=0.1)
+                )
+                (output): BertSelfOutput(
+                  (dense): Linear(in_features=768, out_features=768, bias=True)
+                  (LayerNorm): LayerNorm(torch.Size([768]), eps=1e-12, elementwise_affine=True)
+                  (dropout): Dropout(p=0.1)
+                )
+              )
+              (intermediate): BertIntermediate(
+                (dense): Linear(in_features=768, out_features=3072, bias=True)
+              )
+              (output): BertOutput(
+                (dense): Linear(in_features=3072, out_features=768, bias=True)
+                (LayerNorm): LayerNorm(torch.Size([768]), eps=1e-12, elementwise_affine=True)
+                (dropout): Dropout(p=0.1)
+              )
+            )
+            (4): BertLayer(
+              (attention): BertAttention(
+                (self): BertSelfAttention(
+                  (query): Linear(in_features=768, out_features=768, bias=True)
+                  (key): Linear(in_features=768, out_features=768, bias=True)
+                  (value): Linear(in_features=768, out_features=768, bias=True)
+                  (dropout): Dropout(p=0.1)
+                )
+                (output): BertSelfOutput(
+                  (dense): Linear(in_features=768, out_features=768, bias=True)
+                  (LayerNorm): LayerNorm(torch.Size([768]), eps=1e-12, elementwise_affine=True)
+                  (dropout): Dropout(p=0.1)
+                )
+              )
+              (intermediate): BertIntermediate(
+                (dense): Linear(in_features=768, out_features=3072, bias=True)
+              )
+              (output): BertOutput(
+                (dense): Linear(in_features=3072, out_features=768, bias=True)
+                (LayerNorm): LayerNorm(torch.Size([768]), eps=1e-12, elementwise_affine=True)
+                (dropout): Dropout(p=0.1)
+              )
+            )
+            (5): BertLayer(
+              (attention): BertAttention(
+                (self): BertSelfAttention(
+                  (query): Linear(in_features=768, out_features=768, bias=True)
+                  (key): Linear(in_features=768, out_features=768, bias=True)
+                  (value): Linear(in_features=768, out_features=768, bias=True)
+                  (dropout): Dropout(p=0.1)
+                )
+                (output): BertSelfOutput(
+                  (dense): Linear(in_features=768, out_features=768, bias=True)
+                  (LayerNorm): LayerNorm(torch.Size([768]), eps=1e-12, elementwise_affine=True)
+                  (dropout): Dropout(p=0.1)
+                )
+              )
+              (intermediate): BertIntermediate(
+                (dense): Linear(in_features=768, out_features=3072, bias=True)
+              )
+              (output): BertOutput(
+                (dense): Linear(in_features=3072, out_features=768, bias=True)
+                (LayerNorm): LayerNorm(torch.Size([768]), eps=1e-12, elementwise_affine=True)
+                (dropout): Dropout(p=0.1)
+              )
+            )
+            (6): BertLayer(
+              (attention): BertAttention(
+                (self): BertSelfAttention(
+                  (query): Linear(in_features=768, out_features=768, bias=True)
+                  (key): Linear(in_features=768, out_features=768, bias=True)
+                  (value): Linear(in_features=768, out_features=768, bias=True)
+                  (dropout): Dropout(p=0.1)
+                )
+                (output): BertSelfOutput(
+                  (dense): Linear(in_features=768, out_features=768, bias=True)
+                  (LayerNorm): LayerNorm(torch.Size([768]), eps=1e-12, elementwise_affine=True)
+                  (dropout): Dropout(p=0.1)
+                )
+              )
+              (intermediate): BertIntermediate(
+                (dense): Linear(in_features=768, out_features=3072, bias=True)
+              )
+              (output): BertOutput(
+                (dense): Linear(in_features=3072, out_features=768, bias=True)
+                (LayerNorm): LayerNorm(torch.Size([768]), eps=1e-12, elementwise_affine=True)
+                (dropout): Dropout(p=0.1)
+              )
+            )
+            (7): BertLayer(
+              (attention): BertAttention(
+                (self): BertSelfAttention(
+                  (query): Linear(in_features=768, out_features=768, bias=True)
+                  (key): Linear(in_features=768, out_features=768, bias=True)
+                  (value): Linear(in_features=768, out_features=768, bias=True)
+                  (dropout): Dropout(p=0.1)
+                )
+                (output): BertSelfOutput(
+                  (dense): Linear(in_features=768, out_features=768, bias=True)
+                  (LayerNorm): LayerNorm(torch.Size([768]), eps=1e-12, elementwise_affine=True)
+                  (dropout): Dropout(p=0.1)
+                )
+              )
+              (intermediate): BertIntermediate(
+                (dense): Linear(in_features=768, out_features=3072, bias=True)
+              )
+              (output): BertOutput(
+                (dense): Linear(in_features=3072, out_features=768, bias=True)
+                (LayerNorm): LayerNorm(torch.Size([768]), eps=1e-12, elementwise_affine=True)
+                (dropout): Dropout(p=0.1)
+              )
+            )
+            (8): BertLayer(
+              (attention): BertAttention(
+                (self): BertSelfAttention(
+                  (query): Linear(in_features=768, out_features=768, bias=True)
+                  (key): Linear(in_features=768, out_features=768, bias=True)
+                  (value): Linear(in_features=768, out_features=768, bias=True)
+                  (dropout): Dropout(p=0.1)
+                )
+                (output): BertSelfOutput(
+                  (dense): Linear(in_features=768, out_features=768, bias=True)
+                  (LayerNorm): LayerNorm(torch.Size([768]), eps=1e-12, elementwise_affine=True)
+                  (dropout): Dropout(p=0.1)
+                )
+              )
+              (intermediate): BertIntermediate(
+                (dense): Linear(in_features=768, out_features=3072, bias=True)
+              )
+              (output): BertOutput(
+                (dense): Linear(in_features=3072, out_features=768, bias=True)
+                (LayerNorm): LayerNorm(torch.Size([768]), eps=1e-12, elementwise_affine=True)
+                (dropout): Dropout(p=0.1)
+              )
+            )
+            (9): BertLayer(
+              (attention): BertAttention(
+                (self): BertSelfAttention(
+                  (query): Linear(in_features=768, out_features=768, bias=True)
+                  (key): Linear(in_features=768, out_features=768, bias=True)
+                  (value): Linear(in_features=768, out_features=768, bias=True)
+                  (dropout): Dropout(p=0.1)
+                )
+                (output): BertSelfOutput(
+                  (dense): Linear(in_features=768, out_features=768, bias=True)
+                  (LayerNorm): LayerNorm(torch.Size([768]), eps=1e-12, elementwise_affine=True)
+                  (dropout): Dropout(p=0.1)
+                )
+              )
+              (intermediate): BertIntermediate(
+                (dense): Linear(in_features=768, out_features=3072, bias=True)
+              )
+              (output): BertOutput(
+                (dense): Linear(in_features=3072, out_features=768, bias=True)
+                (LayerNorm): LayerNorm(torch.Size([768]), eps=1e-12, elementwise_affine=True)
+                (dropout): Dropout(p=0.1)
+              )
+            )
+            (10): BertLayer(
+              (attention): BertAttention(
+                (self): BertSelfAttention(
+                  (query): Linear(in_features=768, out_features=768, bias=True)
+                  (key): Linear(in_features=768, out_features=768, bias=True)
+                  (value): Linear(in_features=768, out_features=768, bias=True)
+                  (dropout): Dropout(p=0.1)
+                )
+                (output): BertSelfOutput(
+                  (dense): Linear(in_features=768, out_features=768, bias=True)
+                  (LayerNorm): LayerNorm(torch.Size([768]), eps=1e-12, elementwise_affine=True)
+                  (dropout): Dropout(p=0.1)
+                )
+              )
+              (intermediate): BertIntermediate(
+                (dense): Linear(in_features=768, out_features=3072, bias=True)
+              )
+              (output): BertOutput(
+                (dense): Linear(in_features=3072, out_features=768, bias=True)
+                (LayerNorm): LayerNorm(torch.Size([768]), eps=1e-12, elementwise_affine=True)
+                (dropout): Dropout(p=0.1)
+              )
+            )
+            (11): BertLayer(
+              (attention): BertAttention(
+                (self): BertSelfAttention(
+                  (query): Linear(in_features=768, out_features=768, bias=True)
+                  (key): Linear(in_features=768, out_features=768, bias=True)
+                  (value): Linear(in_features=768, out_features=768, bias=True)
+                  (dropout): Dropout(p=0.1)
+                )
+                (output): BertSelfOutput(
+                  (dense): Linear(in_features=768, out_features=768, bias=True)
+                  (LayerNorm): LayerNorm(torch.Size([768]), eps=1e-12, elementwise_affine=True)
+                  (dropout): Dropout(p=0.1)
+                )
+              )
+              (intermediate): BertIntermediate(
+                (dense): Linear(in_features=768, out_features=3072, bias=True)
+              )
+              (output): BertOutput(
+                (dense): Linear(in_features=3072, out_features=768, bias=True)
+                (LayerNorm): LayerNorm(torch.Size([768]), eps=1e-12, elementwise_affine=True)
+                (dropout): Dropout(p=0.1)
+              )
+            )
+          )
+        )
+        (pooler): BertPooler(
+          (dense): Linear(in_features=768, out_features=768, bias=True)
+          (activation): Tanh()
+        )
+      )
+    )
+  )
+  (multirc_mdl): SingleClassifier(
+    (pooler): Pooler(
+      (project): Linear(in_features=768, out_features=512, bias=True)
+    )
+    (classifier): Classifier(
+      (classifier): Sequential(
+        (0): Linear(in_features=512, out_features=32, bias=True)
+        (1): Tanh()
+        (2): LayerNorm(torch.Size([32]), eps=1e-05, elementwise_affine=True)
+        (3): Dropout(p=0.2)
+        (4): Linear(in_features=32, out_features=2, bias=True)
+      )
+    )
+  )
+)
+03/16 06:47:03 PM: Model parameters:
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.embeddings.word_embeddings.weight: Non-trainable parameter, count 22268928 with torch.Size([28996, 768])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.embeddings.position_embeddings.weight: Non-trainable parameter, count 393216 with torch.Size([512, 768])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.embeddings.token_type_embeddings.weight: Non-trainable parameter, count 1536 with torch.Size([2, 768])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.embeddings.LayerNorm.weight: Non-trainable parameter, count 768 with torch.Size([768])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.embeddings.LayerNorm.bias: Non-trainable parameter, count 768 with torch.Size([768])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.0.attention.self.query.weight: Non-trainable parameter, count 589824 with torch.Size([768, 768])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.0.attention.self.query.bias: Non-trainable parameter, count 768 with torch.Size([768])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.0.attention.self.key.weight: Non-trainable parameter, count 589824 with torch.Size([768, 768])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.0.attention.self.key.bias: Non-trainable parameter, count 768 with torch.Size([768])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.0.attention.self.value.weight: Non-trainable parameter, count 589824 with torch.Size([768, 768])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.0.attention.self.value.bias: Non-trainable parameter, count 768 with torch.Size([768])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.0.attention.output.dense.weight: Non-trainable parameter, count 589824 with torch.Size([768, 768])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.0.attention.output.dense.bias: Non-trainable parameter, count 768 with torch.Size([768])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.0.attention.output.LayerNorm.weight: Non-trainable parameter, count 768 with torch.Size([768])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.0.attention.output.LayerNorm.bias: Non-trainable parameter, count 768 with torch.Size([768])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.0.intermediate.dense.weight: Non-trainable parameter, count 2359296 with torch.Size([3072, 768])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.0.intermediate.dense.bias: Non-trainable parameter, count 3072 with torch.Size([3072])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.0.output.dense.weight: Non-trainable parameter, count 2359296 with torch.Size([768, 3072])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.0.output.dense.bias: Non-trainable parameter, count 768 with torch.Size([768])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.0.output.LayerNorm.weight: Non-trainable parameter, count 768 with torch.Size([768])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.0.output.LayerNorm.bias: Non-trainable parameter, count 768 with torch.Size([768])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.1.attention.self.query.weight: Non-trainable parameter, count 589824 with torch.Size([768, 768])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.1.attention.self.query.bias: Non-trainable parameter, count 768 with torch.Size([768])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.1.attention.self.key.weight: Non-trainable parameter, count 589824 with torch.Size([768, 768])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.1.attention.self.key.bias: Non-trainable parameter, count 768 with torch.Size([768])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.1.attention.self.value.weight: Non-trainable parameter, count 589824 with torch.Size([768, 768])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.1.attention.self.value.bias: Non-trainable parameter, count 768 with torch.Size([768])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.1.attention.output.dense.weight: Non-trainable parameter, count 589824 with torch.Size([768, 768])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.1.attention.output.dense.bias: Non-trainable parameter, count 768 with torch.Size([768])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.1.attention.output.LayerNorm.weight: Non-trainable parameter, count 768 with torch.Size([768])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.1.attention.output.LayerNorm.bias: Non-trainable parameter, count 768 with torch.Size([768])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.1.intermediate.dense.weight: Non-trainable parameter, count 2359296 with torch.Size([3072, 768])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.1.intermediate.dense.bias: Non-trainable parameter, count 3072 with torch.Size([3072])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.1.output.dense.weight: Non-trainable parameter, count 2359296 with torch.Size([768, 3072])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.1.output.dense.bias: Non-trainable parameter, count 768 with torch.Size([768])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.1.output.LayerNorm.weight: Non-trainable parameter, count 768 with torch.Size([768])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.1.output.LayerNorm.bias: Non-trainable parameter, count 768 with torch.Size([768])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.2.attention.self.query.weight: Non-trainable parameter, count 589824 with torch.Size([768, 768])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.2.attention.self.query.bias: Non-trainable parameter, count 768 with torch.Size([768])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.2.attention.self.key.weight: Non-trainable parameter, count 589824 with torch.Size([768, 768])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.2.attention.self.key.bias: Non-trainable parameter, count 768 with torch.Size([768])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.2.attention.self.value.weight: Non-trainable parameter, count 589824 with torch.Size([768, 768])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.2.attention.self.value.bias: Non-trainable parameter, count 768 with torch.Size([768])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.2.attention.output.dense.weight: Non-trainable parameter, count 589824 with torch.Size([768, 768])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.2.attention.output.dense.bias: Non-trainable parameter, count 768 with torch.Size([768])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.2.attention.output.LayerNorm.weight: Non-trainable parameter, count 768 with torch.Size([768])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.2.attention.output.LayerNorm.bias: Non-trainable parameter, count 768 with torch.Size([768])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.2.intermediate.dense.weight: Non-trainable parameter, count 2359296 with torch.Size([3072, 768])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.2.intermediate.dense.bias: Non-trainable parameter, count 3072 with torch.Size([3072])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.2.output.dense.weight: Non-trainable parameter, count 2359296 with torch.Size([768, 3072])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.2.output.dense.bias: Non-trainable parameter, count 768 with torch.Size([768])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.2.output.LayerNorm.weight: Non-trainable parameter, count 768 with torch.Size([768])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.2.output.LayerNorm.bias: Non-trainable parameter, count 768 with torch.Size([768])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.3.attention.self.query.weight: Non-trainable parameter, count 589824 with torch.Size([768, 768])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.3.attention.self.query.bias: Non-trainable parameter, count 768 with torch.Size([768])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.3.attention.self.key.weight: Non-trainable parameter, count 589824 with torch.Size([768, 768])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.3.attention.self.key.bias: Non-trainable parameter, count 768 with torch.Size([768])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.3.attention.self.value.weight: Non-trainable parameter, count 589824 with torch.Size([768, 768])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.3.attention.self.value.bias: Non-trainable parameter, count 768 with torch.Size([768])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.3.attention.output.dense.weight: Non-trainable parameter, count 589824 with torch.Size([768, 768])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.3.attention.output.dense.bias: Non-trainable parameter, count 768 with torch.Size([768])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.3.attention.output.LayerNorm.weight: Non-trainable parameter, count 768 with torch.Size([768])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.3.attention.output.LayerNorm.bias: Non-trainable parameter, count 768 with torch.Size([768])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.3.intermediate.dense.weight: Non-trainable parameter, count 2359296 with torch.Size([3072, 768])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.3.intermediate.dense.bias: Non-trainable parameter, count 3072 with torch.Size([3072])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.3.output.dense.weight: Non-trainable parameter, count 2359296 with torch.Size([768, 3072])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.3.output.dense.bias: Non-trainable parameter, count 768 with torch.Size([768])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.3.output.LayerNorm.weight: Non-trainable parameter, count 768 with torch.Size([768])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.3.output.LayerNorm.bias: Non-trainable parameter, count 768 with torch.Size([768])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.4.attention.self.query.weight: Non-trainable parameter, count 589824 with torch.Size([768, 768])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.4.attention.self.query.bias: Non-trainable parameter, count 768 with torch.Size([768])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.4.attention.self.key.weight: Non-trainable parameter, count 589824 with torch.Size([768, 768])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.4.attention.self.key.bias: Non-trainable parameter, count 768 with torch.Size([768])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.4.attention.self.value.weight: Non-trainable parameter, count 589824 with torch.Size([768, 768])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.4.attention.self.value.bias: Non-trainable parameter, count 768 with torch.Size([768])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.4.attention.output.dense.weight: Non-trainable parameter, count 589824 with torch.Size([768, 768])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.4.attention.output.dense.bias: Non-trainable parameter, count 768 with torch.Size([768])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.4.attention.output.LayerNorm.weight: Non-trainable parameter, count 768 with torch.Size([768])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.4.attention.output.LayerNorm.bias: Non-trainable parameter, count 768 with torch.Size([768])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.4.intermediate.dense.weight: Non-trainable parameter, count 2359296 with torch.Size([3072, 768])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.4.intermediate.dense.bias: Non-trainable parameter, count 3072 with torch.Size([3072])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.4.output.dense.weight: Non-trainable parameter, count 2359296 with torch.Size([768, 3072])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.4.output.dense.bias: Non-trainable parameter, count 768 with torch.Size([768])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.4.output.LayerNorm.weight: Non-trainable parameter, count 768 with torch.Size([768])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.4.output.LayerNorm.bias: Non-trainable parameter, count 768 with torch.Size([768])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.5.attention.self.query.weight: Non-trainable parameter, count 589824 with torch.Size([768, 768])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.5.attention.self.query.bias: Non-trainable parameter, count 768 with torch.Size([768])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.5.attention.self.key.weight: Non-trainable parameter, count 589824 with torch.Size([768, 768])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.5.attention.self.key.bias: Non-trainable parameter, count 768 with torch.Size([768])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.5.attention.self.value.weight: Non-trainable parameter, count 589824 with torch.Size([768, 768])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.5.attention.self.value.bias: Non-trainable parameter, count 768 with torch.Size([768])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.5.attention.output.dense.weight: Non-trainable parameter, count 589824 with torch.Size([768, 768])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.5.attention.output.dense.bias: Non-trainable parameter, count 768 with torch.Size([768])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.5.attention.output.LayerNorm.weight: Non-trainable parameter, count 768 with torch.Size([768])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.5.attention.output.LayerNorm.bias: Non-trainable parameter, count 768 with torch.Size([768])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.5.intermediate.dense.weight: Non-trainable parameter, count 2359296 with torch.Size([3072, 768])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.5.intermediate.dense.bias: Non-trainable parameter, count 3072 with torch.Size([3072])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.5.output.dense.weight: Non-trainable parameter, count 2359296 with torch.Size([768, 3072])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.5.output.dense.bias: Non-trainable parameter, count 768 with torch.Size([768])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.5.output.LayerNorm.weight: Non-trainable parameter, count 768 with torch.Size([768])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.5.output.LayerNorm.bias: Non-trainable parameter, count 768 with torch.Size([768])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.6.attention.self.query.weight: Non-trainable parameter, count 589824 with torch.Size([768, 768])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.6.attention.self.query.bias: Non-trainable parameter, count 768 with torch.Size([768])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.6.attention.self.key.weight: Non-trainable parameter, count 589824 with torch.Size([768, 768])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.6.attention.self.key.bias: Non-trainable parameter, count 768 with torch.Size([768])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.6.attention.self.value.weight: Non-trainable parameter, count 589824 with torch.Size([768, 768])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.6.attention.self.value.bias: Non-trainable parameter, count 768 with torch.Size([768])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.6.attention.output.dense.weight: Non-trainable parameter, count 589824 with torch.Size([768, 768])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.6.attention.output.dense.bias: Non-trainable parameter, count 768 with torch.Size([768])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.6.attention.output.LayerNorm.weight: Non-trainable parameter, count 768 with torch.Size([768])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.6.attention.output.LayerNorm.bias: Non-trainable parameter, count 768 with torch.Size([768])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.6.intermediate.dense.weight: Non-trainable parameter, count 2359296 with torch.Size([3072, 768])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.6.intermediate.dense.bias: Non-trainable parameter, count 3072 with torch.Size([3072])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.6.output.dense.weight: Non-trainable parameter, count 2359296 with torch.Size([768, 3072])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.6.output.dense.bias: Non-trainable parameter, count 768 with torch.Size([768])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.6.output.LayerNorm.weight: Non-trainable parameter, count 768 with torch.Size([768])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.6.output.LayerNorm.bias: Non-trainable parameter, count 768 with torch.Size([768])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.7.attention.self.query.weight: Non-trainable parameter, count 589824 with torch.Size([768, 768])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.7.attention.self.query.bias: Non-trainable parameter, count 768 with torch.Size([768])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.7.attention.self.key.weight: Non-trainable parameter, count 589824 with torch.Size([768, 768])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.7.attention.self.key.bias: Non-trainable parameter, count 768 with torch.Size([768])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.7.attention.self.value.weight: Non-trainable parameter, count 589824 with torch.Size([768, 768])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.7.attention.self.value.bias: Non-trainable parameter, count 768 with torch.Size([768])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.7.attention.output.dense.weight: Non-trainable parameter, count 589824 with torch.Size([768, 768])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.7.attention.output.dense.bias: Non-trainable parameter, count 768 with torch.Size([768])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.7.attention.output.LayerNorm.weight: Non-trainable parameter, count 768 with torch.Size([768])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.7.attention.output.LayerNorm.bias: Non-trainable parameter, count 768 with torch.Size([768])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.7.intermediate.dense.weight: Non-trainable parameter, count 2359296 with torch.Size([3072, 768])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.7.intermediate.dense.bias: Non-trainable parameter, count 3072 with torch.Size([3072])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.7.output.dense.weight: Non-trainable parameter, count 2359296 with torch.Size([768, 3072])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.7.output.dense.bias: Non-trainable parameter, count 768 with torch.Size([768])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.7.output.LayerNorm.weight: Non-trainable parameter, count 768 with torch.Size([768])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.7.output.LayerNorm.bias: Non-trainable parameter, count 768 with torch.Size([768])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.8.attention.self.query.weight: Non-trainable parameter, count 589824 with torch.Size([768, 768])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.8.attention.self.query.bias: Non-trainable parameter, count 768 with torch.Size([768])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.8.attention.self.key.weight: Non-trainable parameter, count 589824 with torch.Size([768, 768])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.8.attention.self.key.bias: Non-trainable parameter, count 768 with torch.Size([768])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.8.attention.self.value.weight: Non-trainable parameter, count 589824 with torch.Size([768, 768])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.8.attention.self.value.bias: Non-trainable parameter, count 768 with torch.Size([768])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.8.attention.output.dense.weight: Non-trainable parameter, count 589824 with torch.Size([768, 768])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.8.attention.output.dense.bias: Non-trainable parameter, count 768 with torch.Size([768])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.8.attention.output.LayerNorm.weight: Non-trainable parameter, count 768 with torch.Size([768])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.8.attention.output.LayerNorm.bias: Non-trainable parameter, count 768 with torch.Size([768])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.8.intermediate.dense.weight: Non-trainable parameter, count 2359296 with torch.Size([3072, 768])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.8.intermediate.dense.bias: Non-trainable parameter, count 3072 with torch.Size([3072])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.8.output.dense.weight: Non-trainable parameter, count 2359296 with torch.Size([768, 3072])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.8.output.dense.bias: Non-trainable parameter, count 768 with torch.Size([768])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.8.output.LayerNorm.weight: Non-trainable parameter, count 768 with torch.Size([768])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.8.output.LayerNorm.bias: Non-trainable parameter, count 768 with torch.Size([768])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.9.attention.self.query.weight: Non-trainable parameter, count 589824 with torch.Size([768, 768])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.9.attention.self.query.bias: Non-trainable parameter, count 768 with torch.Size([768])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.9.attention.self.key.weight: Non-trainable parameter, count 589824 with torch.Size([768, 768])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.9.attention.self.key.bias: Non-trainable parameter, count 768 with torch.Size([768])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.9.attention.self.value.weight: Non-trainable parameter, count 589824 with torch.Size([768, 768])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.9.attention.self.value.bias: Non-trainable parameter, count 768 with torch.Size([768])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.9.attention.output.dense.weight: Non-trainable parameter, count 589824 with torch.Size([768, 768])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.9.attention.output.dense.bias: Non-trainable parameter, count 768 with torch.Size([768])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.9.attention.output.LayerNorm.weight: Non-trainable parameter, count 768 with torch.Size([768])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.9.attention.output.LayerNorm.bias: Non-trainable parameter, count 768 with torch.Size([768])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.9.intermediate.dense.weight: Non-trainable parameter, count 2359296 with torch.Size([3072, 768])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.9.intermediate.dense.bias: Non-trainable parameter, count 3072 with torch.Size([3072])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.9.output.dense.weight: Non-trainable parameter, count 2359296 with torch.Size([768, 3072])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.9.output.dense.bias: Non-trainable parameter, count 768 with torch.Size([768])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.9.output.LayerNorm.weight: Non-trainable parameter, count 768 with torch.Size([768])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.9.output.LayerNorm.bias: Non-trainable parameter, count 768 with torch.Size([768])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.10.attention.self.query.weight: Non-trainable parameter, count 589824 with torch.Size([768, 768])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.10.attention.self.query.bias: Non-trainable parameter, count 768 with torch.Size([768])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.10.attention.self.key.weight: Non-trainable parameter, count 589824 with torch.Size([768, 768])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.10.attention.self.key.bias: Non-trainable parameter, count 768 with torch.Size([768])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.10.attention.self.value.weight: Non-trainable parameter, count 589824 with torch.Size([768, 768])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.10.attention.self.value.bias: Non-trainable parameter, count 768 with torch.Size([768])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.10.attention.output.dense.weight: Non-trainable parameter, count 589824 with torch.Size([768, 768])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.10.attention.output.dense.bias: Non-trainable parameter, count 768 with torch.Size([768])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.10.attention.output.LayerNorm.weight: Non-trainable parameter, count 768 with torch.Size([768])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.10.attention.output.LayerNorm.bias: Non-trainable parameter, count 768 with torch.Size([768])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.10.intermediate.dense.weight: Non-trainable parameter, count 2359296 with torch.Size([3072, 768])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.10.intermediate.dense.bias: Non-trainable parameter, count 3072 with torch.Size([3072])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.10.output.dense.weight: Non-trainable parameter, count 2359296 with torch.Size([768, 3072])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.10.output.dense.bias: Non-trainable parameter, count 768 with torch.Size([768])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.10.output.LayerNorm.weight: Non-trainable parameter, count 768 with torch.Size([768])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.10.output.LayerNorm.bias: Non-trainable parameter, count 768 with torch.Size([768])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.11.attention.self.query.weight: Non-trainable parameter, count 589824 with torch.Size([768, 768])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.11.attention.self.query.bias: Non-trainable parameter, count 768 with torch.Size([768])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.11.attention.self.key.weight: Non-trainable parameter, count 589824 with torch.Size([768, 768])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.11.attention.self.key.bias: Non-trainable parameter, count 768 with torch.Size([768])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.11.attention.self.value.weight: Non-trainable parameter, count 589824 with torch.Size([768, 768])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.11.attention.self.value.bias: Non-trainable parameter, count 768 with torch.Size([768])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.11.attention.output.dense.weight: Non-trainable parameter, count 589824 with torch.Size([768, 768])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.11.attention.output.dense.bias: Non-trainable parameter, count 768 with torch.Size([768])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.11.attention.output.LayerNorm.weight: Non-trainable parameter, count 768 with torch.Size([768])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.11.attention.output.LayerNorm.bias: Non-trainable parameter, count 768 with torch.Size([768])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.11.intermediate.dense.weight: Non-trainable parameter, count 2359296 with torch.Size([3072, 768])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.11.intermediate.dense.bias: Non-trainable parameter, count 3072 with torch.Size([3072])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.11.output.dense.weight: Non-trainable parameter, count 2359296 with torch.Size([768, 3072])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.11.output.dense.bias: Non-trainable parameter, count 768 with torch.Size([768])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.11.output.LayerNorm.weight: Non-trainable parameter, count 768 with torch.Size([768])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.encoder.layer.11.output.LayerNorm.bias: Non-trainable parameter, count 768 with torch.Size([768])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.pooler.dense.weight: Non-trainable parameter, count 589824 with torch.Size([768, 768])
+03/16 06:47:03 PM: 	sent_encoder._text_field_embedder.model.pooler.dense.bias: Non-trainable parameter, count 768 with torch.Size([768])
+03/16 06:47:03 PM: 	multirc_mdl.pooler.project.weight: Trainable parameter, count 393216 with torch.Size([512, 768])
+03/16 06:47:03 PM: 	multirc_mdl.pooler.project.bias: Trainable parameter, count 512 with torch.Size([512])
+03/16 06:47:03 PM: 	multirc_mdl.classifier.classifier.0.weight: Trainable parameter, count 16384 with torch.Size([32, 512])
+03/16 06:47:03 PM: 	multirc_mdl.classifier.classifier.0.bias: Trainable parameter, count 32 with torch.Size([32])
+03/16 06:47:03 PM: 	multirc_mdl.classifier.classifier.2.weight: Trainable parameter, count 32 with torch.Size([32])
+03/16 06:47:03 PM: 	multirc_mdl.classifier.classifier.2.bias: Trainable parameter, count 32 with torch.Size([32])
+03/16 06:47:03 PM: 	multirc_mdl.classifier.classifier.4.weight: Trainable parameter, count 64 with torch.Size([2, 32])
+03/16 06:47:03 PM: 	multirc_mdl.classifier.classifier.4.bias: Trainable parameter, count 2 with torch.Size([2])
+03/16 06:47:03 PM: Total number of parameters: 108720546 (1.08721e+08)
+03/16 06:47:03 PM: Number of trainable parameters: 410274 (410274)
+03/16 06:47:03 PM: Finished building model in 524.129s
+03/16 06:47:03 PM: Will run the following steps for this experiment:
+Training model on tasks: multirc 
+Re-training model for individual target tasks 
+Evaluating model on tasks: multirc 
+
+03/16 06:47:03 PM: Training...
+03/16 06:47:03 PM: patience = 5
+03/16 06:47:03 PM: val_interval = 50
+03/16 06:47:03 PM: max_vals = 10
+03/16 06:47:03 PM: cuda_device = -1
+03/16 06:47:03 PM: grad_norm = 5.0
+03/16 06:47:03 PM: grad_clipping = None
+03/16 06:47:03 PM: lr_decay = 0.99
+03/16 06:47:03 PM: min_lr = 1e-06
+03/16 06:47:03 PM: keep_all_checkpoints = 0
+03/16 06:47:03 PM: val_data_limit = 5000
+03/16 06:47:03 PM: max_epochs = -1
+03/16 06:47:03 PM: dec_val_scale = 250
+03/16 06:47:03 PM: training_data_fraction = 1
+03/16 06:47:03 PM: accumulation_steps = 1
+03/16 06:47:03 PM: type = adam
+03/16 06:47:03 PM: parameter_groups = None
+03/16 06:47:03 PM: Number of trainable parameters: 410274
+03/16 06:47:03 PM: infer_type_and_cast = True
+03/16 06:47:03 PM: Converting Params object to dict; logging of default values will not occur when dictionary parameters are used subsequently.
+03/16 06:47:03 PM: CURRENTLY DEFINED PARAMETERS: 
+03/16 06:47:03 PM: lr = 0.0003
+03/16 06:47:03 PM: amsgrad = True
+03/16 06:47:03 PM: type = reduce_on_plateau
+03/16 06:47:03 PM: Converting Params object to dict; logging of default values will not occur when dictionary parameters are used subsequently.
+03/16 06:47:03 PM: CURRENTLY DEFINED PARAMETERS: 
+03/16 06:47:03 PM: mode = max
+03/16 06:47:03 PM: factor = 0.5
+03/16 06:47:03 PM: patience = 1
+03/16 06:47:03 PM: threshold = 0.0001
+03/16 06:47:03 PM: threshold_mode = abs
+03/16 06:47:03 PM: verbose = True
+03/16 06:47:03 PM: Starting training without restoring from a checkpoint.
+03/16 06:47:03 PM: Training examples per task, before any subsampling: {'multirc': 27243}
+03/16 06:47:03 PM: Beginning training with stopping criteria based on metric: multirc_avg
+03/16 06:47:13 PM: Update 31: task multirc, steps since last val 31 (total steps = 31): ans_f1: 0.5441, qst_f1: 0.3109, em: 0.4826, avg: 0.5134, multirc_loss: 0.8403
+03/16 06:47:19 PM: ***** Step 50 / Validation 1 *****
+03/16 06:47:20 PM: multirc: trained on 50 steps (50 batches) since val, 0.015 epochs
+03/16 06:47:20 PM: Validating...
+03/16 06:47:23 PM: Evaluate: task multirc, batch 13 (606): ans_f1: 0.6316, qst_f1: 0.6078, em: 0.0000, avg: 0.3158, multirc_loss: 0.7222
+03/16 06:47:33 PM: Evaluate: task multirc, batch 51 (606): ans_f1: 0.6634, qst_f1: 0.6514, em: 0.0109, avg: 0.3371, multirc_loss: 0.7151
+03/16 06:47:43 PM: Evaluate: task multirc, batch 88 (606): ans_f1: 0.6415, qst_f1: 0.6343, em: 0.0070, avg: 0.3243, multirc_loss: 0.7309
+03/16 06:47:54 PM: Evaluate: task multirc, batch 126 (606): ans_f1: 0.6262, qst_f1: 0.6160, em: 0.0051, avg: 0.3157, multirc_loss: 0.7372
+03/16 06:48:04 PM: Evaluate: task multirc, batch 166 (606): ans_f1: 0.6041, qst_f1: 0.5917, em: 0.0040, avg: 0.3041, multirc_loss: 0.7476
+03/16 06:48:14 PM: Evaluate: task multirc, batch 204 (606): ans_f1: 0.6013, qst_f1: 0.5823, em: 0.0063, avg: 0.3038, multirc_loss: 0.7463
+03/16 06:48:25 PM: Evaluate: task multirc, batch 242 (606): ans_f1: 0.5881, qst_f1: 0.5718, em: 0.0053, avg: 0.2967, multirc_loss: 0.7504
+03/16 06:48:35 PM: Evaluate: task multirc, batch 280 (606): ans_f1: 0.5936, qst_f1: 0.5807, em: 0.0045, avg: 0.2991, multirc_loss: 0.7494
+03/16 06:48:45 PM: Evaluate: task multirc, batch 318 (606): ans_f1: 0.5880, qst_f1: 0.5735, em: 0.0040, avg: 0.2960, multirc_loss: 0.7538
+03/16 06:48:56 PM: Evaluate: task multirc, batch 356 (606): ans_f1: 0.5946, qst_f1: 0.5814, em: 0.0036, avg: 0.2991, multirc_loss: 0.7507
+03/16 06:49:06 PM: Evaluate: task multirc, batch 393 (606): ans_f1: 0.5974, qst_f1: 0.5834, em: 0.0049, avg: 0.3011, multirc_loss: 0.7481
+03/16 06:49:17 PM: Evaluate: task multirc, batch 431 (606): ans_f1: 0.6026, qst_f1: 0.5913, em: 0.0131, avg: 0.3079, multirc_loss: 0.7455
+03/16 06:49:27 PM: Evaluate: task multirc, batch 469 (606): ans_f1: 0.6050, qst_f1: 0.5945, em: 0.0118, avg: 0.3084, multirc_loss: 0.7441
+03/16 06:49:38 PM: Evaluate: task multirc, batch 507 (606): ans_f1: 0.6017, qst_f1: 0.5919, em: 0.0112, avg: 0.3064, multirc_loss: 0.7460
+03/16 06:49:49 PM: Evaluate: task multirc, batch 544 (606): ans_f1: 0.6028, qst_f1: 0.5932, em: 0.0104, avg: 0.3066, multirc_loss: 0.7458
+03/16 06:49:59 PM: Evaluate: task multirc, batch 581 (606): ans_f1: 0.5969, qst_f1: 0.5886, em: 0.0109, avg: 0.3039, multirc_loss: 0.7485
+03/16 06:50:07 PM: Best result seen so far for multirc.
+03/16 06:50:07 PM: Best result seen so far for micro.
+03/16 06:50:07 PM: Best result seen so far for macro.
+03/16 06:50:07 PM: Updating LR scheduler:
+03/16 06:50:07 PM: 	Best result seen so far for macro_avg: 0.304
+03/16 06:50:07 PM: 	# validation passes without improvement: 0
+03/16 06:50:07 PM: multirc_loss: training: 0.783161 validation: 0.748321
+03/16 06:50:07 PM: macro_avg: validation: 0.304288
+03/16 06:50:07 PM: micro_avg: validation: 0.304288
+03/16 06:50:07 PM: multirc_ans_f1: training: 0.605042 validation: 0.599132
+03/16 06:50:07 PM: multirc_qst_f1: training: 0.379552 validation: 0.590172
+03/16 06:50:07 PM: multirc_em: training: 0.507003 validation: 0.009444
+03/16 06:50:07 PM: multirc_avg: training: 0.556022 validation: 0.304288
+03/16 06:50:07 PM: Global learning rate: 0.0003
+03/16 06:50:07 PM: Saving checkpoints to: /home/soujanya/Projects/jiant/jiant-baseline-bert/mtl-multirc
+03/16 06:50:09 PM: Update 58: task multirc, steps since last val 8 (total steps = 58): ans_f1: 0.5556, qst_f1: 0.3125, em: 0.5000, avg: 0.5278, multirc_loss: 0.7173
+03/16 06:50:20 PM: Update 85: task multirc, steps since last val 35 (total steps = 85): ans_f1: 0.4773, qst_f1: 0.2318, em: 0.4850, avg: 0.4811, multirc_loss: 0.7404
+03/16 06:50:25 PM: ***** Step 100 / Validation 2 *****
+03/16 06:50:25 PM: multirc: trained on 50 steps (50 batches) since val, 0.015 epochs
+03/16 06:50:25 PM: Validating...
+03/16 06:50:30 PM: Evaluate: task multirc, batch 17 (606): ans_f1: 0.1860, qst_f1: 0.1022, em: 0.0323, avg: 0.1092, multirc_loss: 0.7087
+03/16 06:50:40 PM: Evaluate: task multirc, batch 55 (606): ans_f1: 0.2448, qst_f1: 0.1197, em: 0.0408, avg: 0.1428, multirc_loss: 0.7018
+03/16 06:50:50 PM: Evaluate: task multirc, batch 92 (606): ans_f1: 0.2760, qst_f1: 0.1335, em: 0.0270, avg: 0.1515, multirc_loss: 0.6914
+03/16 06:51:01 PM: Evaluate: task multirc, batch 130 (606): ans_f1: 0.2417, qst_f1: 0.1226, em: 0.0248, avg: 0.1332, multirc_loss: 0.6889
+03/16 06:51:11 PM: Evaluate: task multirc, batch 165 (606): ans_f1: 0.2657, qst_f1: 0.1479, em: 0.0282, avg: 0.1470, multirc_loss: 0.6867
+03/16 06:51:21 PM: Evaluate: task multirc, batch 202 (606): ans_f1: 0.2370, qst_f1: 0.1265, em: 0.0319, avg: 0.1345, multirc_loss: 0.6861
+03/16 06:51:31 PM: Evaluate: task multirc, batch 239 (606): ans_f1: 0.2306, qst_f1: 0.1244, em: 0.0401, avg: 0.1353, multirc_loss: 0.6849
+03/16 06:51:42 PM: Evaluate: task multirc, batch 276 (606): ans_f1: 0.2453, qst_f1: 0.1365, em: 0.0365, avg: 0.1409, multirc_loss: 0.6852
+03/16 06:51:52 PM: Evaluate: task multirc, batch 313 (606): ans_f1: 0.2639, qst_f1: 0.1490, em: 0.0367, avg: 0.1503, multirc_loss: 0.6849
+03/16 06:52:03 PM: Evaluate: task multirc, batch 350 (606): ans_f1: 0.2797, qst_f1: 0.1594, em: 0.0329, avg: 0.1563, multirc_loss: 0.6846
+03/16 06:52:13 PM: Evaluate: task multirc, batch 383 (606): ans_f1: 0.2665, qst_f1: 0.1501, em: 0.0303, avg: 0.1484, multirc_loss: 0.6843
+03/16 06:52:23 PM: Evaluate: task multirc, batch 418 (606): ans_f1: 0.2875, qst_f1: 0.1657, em: 0.0331, avg: 0.1603, multirc_loss: 0.6850
+03/16 06:52:34 PM: Evaluate: task multirc, batch 455 (606): ans_f1: 0.2777, qst_f1: 0.1559, em: 0.0301, avg: 0.1539, multirc_loss: 0.6859
+03/16 06:52:45 PM: Evaluate: task multirc, batch 493 (606): ans_f1: 0.2801, qst_f1: 0.1571, em: 0.0341, avg: 0.1571, multirc_loss: 0.6856
+03/16 06:52:55 PM: Evaluate: task multirc, batch 530 (606): ans_f1: 0.2716, qst_f1: 0.1524, em: 0.0333, avg: 0.1524, multirc_loss: 0.6849
+03/16 06:53:06 PM: Evaluate: task multirc, batch 567 (606): ans_f1: 0.2833, qst_f1: 0.1621, em: 0.0337, avg: 0.1585, multirc_loss: 0.6844
+03/16 06:53:16 PM: Evaluate: task multirc, batch 604 (606): ans_f1: 0.2774, qst_f1: 0.1572, em: 0.0306, avg: 0.1540, multirc_loss: 0.6852
+03/16 06:53:17 PM: Updating LR scheduler:
+03/16 06:53:17 PM: 	Best result seen so far for macro_avg: 0.304
+03/16 06:53:17 PM: 	# validation passes without improvement: 1
+03/16 06:53:17 PM: multirc_loss: training: 0.743988 validation: 0.685538
+03/16 06:53:17 PM: macro_avg: validation: 0.153407
+03/16 06:53:17 PM: micro_avg: validation: 0.153407
+03/16 06:53:17 PM: multirc_ans_f1: training: 0.448649 validation: 0.276384
+03/16 06:53:17 PM: multirc_qst_f1: training: 0.220548 validation: 0.156361
+03/16 06:53:17 PM: multirc_em: training: 0.460274 validation: 0.030430
+03/16 06:53:17 PM: multirc_avg: training: 0.454461 validation: 0.153407
+03/16 06:53:17 PM: Global learning rate: 0.0003
+03/16 06:53:17 PM: Saving checkpoints to: /home/soujanya/Projects/jiant/jiant-baseline-bert/mtl-multirc
+03/16 06:53:27 PM: Update 124: task multirc, steps since last val 24 (total steps = 124): ans_f1: 0.4130, qst_f1: 0.2026, em: 0.4254, avg: 0.4192, multirc_loss: 0.7495
+03/16 06:53:36 PM: ***** Step 150 / Validation 3 *****
+03/16 06:53:36 PM: multirc: trained on 50 steps (50 batches) since val, 0.015 epochs
+03/16 06:53:36 PM: Validating...
+03/16 06:53:37 PM: Evaluate: task multirc, batch 1 (606): ans_f1: 0.0000, qst_f1: 0.0000, em: 0.0000, avg: 0.0000, multirc_loss: 0.7173
+03/16 06:53:47 PM: Evaluate: task multirc, batch 35 (606): ans_f1: 0.0000, qst_f1: 0.0000, em: 0.0000, avg: 0.0000, multirc_loss: 0.7123
+03/16 08:58:41 PM: Evaluate: task multirc, batch 59 (606): ans_f1: 0.0000, qst_f1: 0.0000, em: 0.0096, avg: 0.0048, multirc_loss: 0.7191
+03/16 08:58:51 PM: Evaluate: task multirc, batch 91 (606): ans_f1: 0.0000, qst_f1: 0.0000, em: 0.0000, avg: 0.0000, multirc_loss: 0.7000
+03/16 08:59:02 PM: Evaluate: task multirc, batch 129 (606): ans_f1: 0.0000, qst_f1: 0.0000, em: 0.0050, avg: 0.0025, multirc_loss: 0.6932
+03/16 08:59:12 PM: Evaluate: task multirc, batch 168 (606): ans_f1: 0.0000, qst_f1: 0.0000, em: 0.0000, avg: 0.0000, multirc_loss: 0.6864
+03/16 08:59:22 PM: Evaluate: task multirc, batch 205 (606): ans_f1: 0.0000, qst_f1: 0.0000, em: 0.0031, avg: 0.0016, multirc_loss: 0.6844
+03/16 08:59:33 PM: Evaluate: task multirc, batch 243 (606): ans_f1: 0.0000, qst_f1: 0.0000, em: 0.0053, avg: 0.0026, multirc_loss: 0.6794
+03/16 08:59:43 PM: Evaluate: task multirc, batch 280 (606): ans_f1: 0.0000, qst_f1: 0.0000, em: 0.0045, avg: 0.0023, multirc_loss: 0.6812
+03/16 08:59:53 PM: Evaluate: task multirc, batch 313 (606): ans_f1: 0.0000, qst_f1: 0.0000, em: 0.0061, avg: 0.0031, multirc_loss: 0.6794
+03/16 09:00:04 PM: Evaluate: task multirc, batch 350 (606): ans_f1: 0.0000, qst_f1: 0.0000, em: 0.0037, avg: 0.0018, multirc_loss: 0.6796
+03/16 09:00:14 PM: Evaluate: task multirc, batch 385 (606): ans_f1: 0.0000, qst_f1: 0.0000, em: 0.0050, avg: 0.0025, multirc_loss: 0.6812
+03/16 09:00:24 PM: Evaluate: task multirc, batch 422 (606): ans_f1: 0.0000, qst_f1: 0.0000, em: 0.0030, avg: 0.0015, multirc_loss: 0.6831
+03/16 09:00:35 PM: Evaluate: task multirc, batch 459 (606): ans_f1: 0.0000, qst_f1: 0.0000, em: 0.0027, avg: 0.0014, multirc_loss: 0.6846
+03/16 09:00:45 PM: Evaluate: task multirc, batch 496 (606): ans_f1: 0.0000, qst_f1: 0.0000, em: 0.0038, avg: 0.0019, multirc_loss: 0.6841
+03/16 09:00:56 PM: Evaluate: task multirc, batch 532 (606): ans_f1: 0.0000, qst_f1: 0.0000, em: 0.0035, avg: 0.0018, multirc_loss: 0.6829
+03/16 09:01:06 PM: Evaluate: task multirc, batch 568 (606): ans_f1: 0.0000, qst_f1: 0.0000, em: 0.0034, avg: 0.0017, multirc_loss: 0.6813
+03/16 09:01:17 PM: Evaluate: task multirc, batch 604 (606): ans_f1: 0.0000, qst_f1: 0.0000, em: 0.0032, avg: 0.0016, multirc_loss: 0.6818
+03/16 09:01:18 PM: Updating LR scheduler:
+03/16 09:01:18 PM: 	Best result seen so far for macro_avg: 0.304
+03/16 09:01:18 PM: 	# validation passes without improvement: 0
+03/16 09:01:18 PM: multirc_loss: training: 0.732718 validation: 0.682323
+03/16 09:01:18 PM: macro_avg: validation: 0.001574
+03/16 09:01:18 PM: micro_avg: validation: 0.001574
+03/16 09:01:18 PM: multirc_ans_f1: training: 0.382353 validation: 0.000000
+03/16 09:01:18 PM: multirc_qst_f1: training: 0.175587 validation: 0.000000
+03/16 09:01:18 PM: multirc_em: training: 0.436620 validation: 0.003148
+03/16 09:01:18 PM: multirc_avg: training: 0.409486 validation: 0.001574
+03/16 09:01:18 PM: Global learning rate: 0.00015
+03/16 09:01:18 PM: Saving checkpoints to: /home/soujanya/Projects/jiant/jiant-baseline-bert/mtl-multirc
+03/16 09:01:27 PM: Update 175: task multirc, steps since last val 25 (total steps = 175): ans_f1: 0.3576, qst_f1: 0.1421, em: 0.5053, avg: 0.4314, multirc_loss: 0.7055
+03/16 09:01:37 PM: ***** Step 200 / Validation 4 *****
+03/16 09:01:37 PM: multirc: trained on 50 steps (50 batches) since val, 0.015 epochs
+03/16 09:01:37 PM: Validating...
+03/16 09:01:37 PM: Evaluate: task multirc, batch 2 (606): ans_f1: 0.0000, qst_f1: 0.0000, em: 0.0000, avg: 0.0000, multirc_loss: 0.6771
+03/16 09:01:48 PM: Evaluate: task multirc, batch 38 (606): ans_f1: 0.0380, qst_f1: 0.0159, em: 0.0000, avg: 0.0190, multirc_loss: 0.7031
+03/16 09:01:58 PM: Evaluate: task multirc, batch 74 (606): ans_f1: 0.0203, qst_f1: 0.0087, em: 0.0079, avg: 0.0141, multirc_loss: 0.6965
+03/16 09:02:08 PM: Evaluate: task multirc, batch 107 (606): ans_f1: 0.0296, qst_f1: 0.0132, em: 0.0000, avg: 0.0148, multirc_loss: 0.6902
+03/16 09:02:18 PM: Evaluate: task multirc, batch 143 (606): ans_f1: 0.0270, qst_f1: 0.0121, em: 0.0000, avg: 0.0135, multirc_loss: 0.6875
+03/16 09:02:29 PM: Evaluate: task multirc, batch 179 (606): ans_f1: 0.0280, qst_f1: 0.0142, em: 0.0000, avg: 0.0140, multirc_loss: 0.6859
+03/16 09:02:39 PM: Evaluate: task multirc, batch 212 (606): ans_f1: 0.0244, qst_f1: 0.0117, em: 0.0061, avg: 0.0152, multirc_loss: 0.6825
+03/16 09:02:49 PM: Evaluate: task multirc, batch 246 (606): ans_f1: 0.0215, qst_f1: 0.0100, em: 0.0078, avg: 0.0147, multirc_loss: 0.6809
+03/16 09:03:00 PM: Evaluate: task multirc, batch 280 (606): ans_f1: 0.0206, qst_f1: 0.0098, em: 0.0045, avg: 0.0126, multirc_loss: 0.6818
+03/16 09:03:10 PM: Evaluate: task multirc, batch 317 (606): ans_f1: 0.0256, qst_f1: 0.0131, em: 0.0040, avg: 0.0148, multirc_loss: 0.6814
+03/16 09:03:21 PM: Evaluate: task multirc, batch 352 (606): ans_f1: 0.0325, qst_f1: 0.0173, em: 0.0036, avg: 0.0181, multirc_loss: 0.6818
+03/16 09:03:31 PM: Evaluate: task multirc, batch 388 (606): ans_f1: 0.0321, qst_f1: 0.0175, em: 0.0033, avg: 0.0177, multirc_loss: 0.6823
+03/16 09:03:41 PM: Evaluate: task multirc, batch 425 (606): ans_f1: 0.0341, qst_f1: 0.0185, em: 0.0044, avg: 0.0193, multirc_loss: 0.6828
+03/16 09:03:52 PM: Evaluate: task multirc, batch 462 (606): ans_f1: 0.0312, qst_f1: 0.0167, em: 0.0040, avg: 0.0176, multirc_loss: 0.6839
+03/16 09:04:03 PM: Evaluate: task multirc, batch 497 (606): ans_f1: 0.0495, qst_f1: 0.0238, em: 0.0075, avg: 0.0285, multirc_loss: 0.6837
+03/16 09:04:13 PM: Evaluate: task multirc, batch 533 (606): ans_f1: 0.0465, qst_f1: 0.0223, em: 0.0059, avg: 0.0262, multirc_loss: 0.6828
+03/16 09:04:24 PM: Evaluate: task multirc, batch 567 (606): ans_f1: 0.0451, qst_f1: 0.0220, em: 0.0067, avg: 0.0259, multirc_loss: 0.6820
+03/16 09:04:34 PM: Evaluate: task multirc, batch 602 (606): ans_f1: 0.0426, qst_f1: 0.0207, em: 0.0053, avg: 0.0239, multirc_loss: 0.6819
+03/16 09:04:36 PM: Updating LR scheduler:
+03/16 09:04:36 PM: 	Best result seen so far for macro_avg: 0.304
+03/16 09:04:36 PM: 	# validation passes without improvement: 1
+03/16 09:04:36 PM: multirc_loss: training: 0.702935 validation: 0.682509
+03/16 09:04:36 PM: macro_avg: validation: 0.023686
+03/16 09:04:36 PM: micro_avg: validation: 0.023686
+03/16 09:04:36 PM: multirc_ans_f1: training: 0.389937 validation: 0.042125
+03/16 09:04:36 PM: multirc_qst_f1: training: 0.166208 validation: 0.020569
+03/16 09:04:36 PM: multirc_em: training: 0.490358 validation: 0.005247
+03/16 09:04:36 PM: multirc_avg: training: 0.440148 validation: 0.023686
+03/16 09:04:36 PM: Global learning rate: 0.00015
+03/16 09:04:36 PM: Saving checkpoints to: /home/soujanya/Projects/jiant/jiant-baseline-bert/mtl-multirc
+03/16 09:04:45 PM: Update 224: task multirc, steps since last val 24 (total steps = 224): ans_f1: 0.3099, qst_f1: 0.1170, em: 0.4787, avg: 0.3943, multirc_loss: 0.7201
+03/16 09:04:54 PM: ***** Step 250 / Validation 5 *****
+03/16 09:04:54 PM: multirc: trained on 50 steps (50 batches) since val, 0.015 epochs
+03/16 09:04:54 PM: Validating...
+03/16 09:04:55 PM: Evaluate: task multirc, batch 2 (606): ans_f1: 0.0000, qst_f1: 0.0000, em: 0.0000, avg: 0.0000, multirc_loss: 0.6769
+03/16 09:05:05 PM: Evaluate: task multirc, batch 37 (606): ans_f1: 0.0267, qst_f1: 0.0145, em: 0.0000, avg: 0.0133, multirc_loss: 0.7015
+03/16 09:05:15 PM: Evaluate: task multirc, batch 74 (606): ans_f1: 0.0137, qst_f1: 0.0079, em: 0.0079, avg: 0.0108, multirc_loss: 0.6962
+03/16 09:05:25 PM: Evaluate: task multirc, batch 111 (606): ans_f1: 0.0192, qst_f1: 0.0092, em: 0.0000, avg: 0.0096, multirc_loss: 0.6889
+03/16 09:05:36 PM: Evaluate: task multirc, batch 149 (606): ans_f1: 0.0225, qst_f1: 0.0112, em: 0.0000, avg: 0.0112, multirc_loss: 0.6857
+03/16 09:05:46 PM: Evaluate: task multirc, batch 184 (606): ans_f1: 0.0182, qst_f1: 0.0092, em: 0.0000, avg: 0.0091, multirc_loss: 0.6851
+03/16 09:05:56 PM: Evaluate: task multirc, batch 220 (606): ans_f1: 0.0159, qst_f1: 0.0076, em: 0.0059, avg: 0.0109, multirc_loss: 0.6800
+03/16 09:06:07 PM: Evaluate: task multirc, batch 256 (606): ans_f1: 0.0137, qst_f1: 0.0064, em: 0.0074, avg: 0.0106, multirc_loss: 0.6802
+03/16 09:06:17 PM: Evaluate: task multirc, batch 292 (606): ans_f1: 0.0139, qst_f1: 0.0071, em: 0.0044, avg: 0.0091, multirc_loss: 0.6809
+03/16 09:06:28 PM: Evaluate: task multirc, batch 330 (606): ans_f1: 0.0142, qst_f1: 0.0075, em: 0.0039, avg: 0.0090, multirc_loss: 0.6806
+03/16 09:06:38 PM: Evaluate: task multirc, batch 366 (606): ans_f1: 0.0189, qst_f1: 0.0101, em: 0.0035, avg: 0.0112, multirc_loss: 0.6813
+03/16 09:06:49 PM: Evaluate: task multirc, batch 399 (606): ans_f1: 0.0201, qst_f1: 0.0108, em: 0.0032, avg: 0.0116, multirc_loss: 0.6811
+03/16 09:06:59 PM: Evaluate: task multirc, batch 435 (606): ans_f1: 0.0207, qst_f1: 0.0108, em: 0.0029, avg: 0.0118, multirc_loss: 0.6824
+03/16 09:07:10 PM: Evaluate: task multirc, batch 465 (606): ans_f1: 0.0194, qst_f1: 0.0100, em: 0.0040, avg: 0.0117, multirc_loss: 0.6827
+03/16 09:07:20 PM: Evaluate: task multirc, batch 486 (606): ans_f1: 0.0287, qst_f1: 0.0141, em: 0.0051, avg: 0.0169, multirc_loss: 0.6825
+03/16 09:07:31 PM: Evaluate: task multirc, batch 521 (606): ans_f1: 0.0332, qst_f1: 0.0153, em: 0.0048, avg: 0.0190, multirc_loss: 0.6820
+03/16 09:07:42 PM: Evaluate: task multirc, batch 557 (606): ans_f1: 0.0342, qst_f1: 0.0164, em: 0.0045, avg: 0.0194, multirc_loss: 0.6815
+03/16 09:07:52 PM: Evaluate: task multirc, batch 594 (606): ans_f1: 0.0324, qst_f1: 0.0155, em: 0.0043, avg: 0.0183, multirc_loss: 0.6803
+03/16 09:07:56 PM: Updating LR scheduler:
+03/16 09:07:56 PM: 	Best result seen so far for macro_avg: 0.304
+03/16 09:07:56 PM: 	# validation passes without improvement: 0
+03/16 09:07:56 PM: multirc_loss: training: 0.731311 validation: 0.681483
+03/16 09:07:56 PM: macro_avg: validation: 0.017898
+03/16 09:07:56 PM: micro_avg: validation: 0.017898
+03/16 09:07:56 PM: multirc_ans_f1: training: 0.299652 validation: 0.031599
+03/16 09:07:56 PM: multirc_qst_f1: training: 0.112319 validation: 0.015194
+03/16 09:07:56 PM: multirc_em: training: 0.475543 validation: 0.004197
+03/16 09:07:56 PM: multirc_avg: training: 0.387598 validation: 0.017898
+03/16 09:07:56 PM: Global learning rate: 7.5e-05
+03/16 09:07:56 PM: Saving checkpoints to: /home/soujanya/Projects/jiant/jiant-baseline-bert/mtl-multirc
+03/16 09:08:03 PM: Update 266: task multirc, steps since last val 16 (total steps = 266): ans_f1: 0.4912, qst_f1: 0.2222, em: 0.5397, avg: 0.5155, multirc_loss: 0.6871
+03/16 09:08:13 PM: Update 292: task multirc, steps since last val 42 (total steps = 292): ans_f1: 0.4922, qst_f1: 0.2462, em: 0.4739, avg: 0.4830, multirc_loss: 0.7238
+03/16 09:08:16 PM: ***** Step 300 / Validation 6 *****
+03/16 09:08:16 PM: multirc: trained on 50 steps (50 batches) since val, 0.015 epochs
+03/16 09:08:16 PM: Validating...
+03/16 09:08:23 PM: Evaluate: task multirc, batch 25 (606): ans_f1: 0.6347, qst_f1: 0.5802, em: 0.0435, avg: 0.3391, multirc_loss: 0.6988
+03/16 09:08:34 PM: Evaluate: task multirc, batch 61 (606): ans_f1: 0.6340, qst_f1: 0.5677, em: 0.0377, avg: 0.3359, multirc_loss: 0.6945
+03/16 09:08:44 PM: Evaluate: task multirc, batch 96 (606): ans_f1: 0.6084, qst_f1: 0.5641, em: 0.0261, avg: 0.3173, multirc_loss: 0.6979
+03/16 09:08:54 PM: Evaluate: task multirc, batch 132 (606): ans_f1: 0.5976, qst_f1: 0.5544, em: 0.0291, avg: 0.3133, multirc_loss: 0.6993
+03/16 09:09:04 PM: Evaluate: task multirc, batch 169 (606): ans_f1: 0.5734, qst_f1: 0.5300, em: 0.0196, avg: 0.2965, multirc_loss: 0.7012
+03/16 09:09:15 PM: Evaluate: task multirc, batch 205 (606): ans_f1: 0.5696, qst_f1: 0.5181, em: 0.0220, avg: 0.2958, multirc_loss: 0.7002
+03/16 09:09:25 PM: Evaluate: task multirc, batch 241 (606): ans_f1: 0.5609, qst_f1: 0.5069, em: 0.0265, avg: 0.2937, multirc_loss: 0.6996
+03/16 09:09:35 PM: Evaluate: task multirc, batch 277 (606): ans_f1: 0.5686, qst_f1: 0.5175, em: 0.0228, avg: 0.2957, multirc_loss: 0.6997
+03/16 09:09:46 PM: Evaluate: task multirc, batch 313 (606): ans_f1: 0.5648, qst_f1: 0.5170, em: 0.0204, avg: 0.2926, multirc_loss: 0.7014
+03/16 09:09:56 PM: Evaluate: task multirc, batch 350 (606): ans_f1: 0.5700, qst_f1: 0.5254, em: 0.0219, avg: 0.2960, multirc_loss: 0.7011
+03/16 09:10:07 PM: Evaluate: task multirc, batch 385 (606): ans_f1: 0.5745, qst_f1: 0.5255, em: 0.0201, avg: 0.2973, multirc_loss: 0.7003
+03/16 09:10:17 PM: Evaluate: task multirc, batch 422 (606): ans_f1: 0.5847, qst_f1: 0.5418, em: 0.0299, avg: 0.3073, multirc_loss: 0.6992
+03/16 09:10:28 PM: Evaluate: task multirc, batch 458 (606): ans_f1: 0.5844, qst_f1: 0.5390, em: 0.0285, avg: 0.3065, multirc_loss: 0.6989
+03/16 09:10:38 PM: Evaluate: task multirc, batch 495 (606): ans_f1: 0.5792, qst_f1: 0.5317, em: 0.0290, avg: 0.3041, multirc_loss: 0.6994
+03/16 09:10:49 PM: Evaluate: task multirc, batch 531 (606): ans_f1: 0.5796, qst_f1: 0.5333, em: 0.0284, avg: 0.3040, multirc_loss: 0.6989
+03/16 09:10:59 PM: Evaluate: task multirc, batch 567 (606): ans_f1: 0.5787, qst_f1: 0.5353, em: 0.0292, avg: 0.3039, multirc_loss: 0.6991
+03/16 09:11:10 PM: Evaluate: task multirc, batch 603 (606): ans_f1: 0.5789, qst_f1: 0.5359, em: 0.0285, avg: 0.3037, multirc_loss: 0.6993
+03/16 09:11:11 PM: Updating LR scheduler:
+03/16 09:11:11 PM: 	Best result seen so far for macro_avg: 0.304
+03/16 09:11:11 PM: 	# validation passes without improvement: 1
+03/16 09:11:11 PM: multirc_loss: training: 0.719477 validation: 0.699219
+03/16 09:11:11 PM: macro_avg: validation: 0.303669
+03/16 09:11:11 PM: micro_avg: validation: 0.303669
+03/16 09:11:11 PM: multirc_ans_f1: training: 0.501279 validation: 0.579007
+03/16 09:11:11 PM: multirc_qst_f1: training: 0.259871 validation: 0.534636
+03/16 09:11:11 PM: multirc_em: training: 0.473829 validation: 0.028332
+03/16 09:11:11 PM: multirc_avg: training: 0.487554 validation: 0.303669
+03/16 09:11:11 PM: Global learning rate: 7.5e-05
+03/16 09:11:11 PM: Saving checkpoints to: /home/soujanya/Projects/jiant/jiant-baseline-bert/mtl-multirc
+03/16 09:11:20 PM: Update 323: task multirc, steps since last val 23 (total steps = 323): ans_f1: 0.5797, qst_f1: 0.3276, em: 0.5057, avg: 0.5427, multirc_loss: 0.7055
+03/16 09:11:30 PM: ***** Step 350 / Validation 7 *****
+03/16 09:11:31 PM: multirc: trained on 50 steps (50 batches) since val, 0.015 epochs
+03/16 09:11:31 PM: Validating...
+03/16 09:11:31 PM: Evaluate: task multirc, batch 1 (606): ans_f1: 0.0000, qst_f1: 0.0000, em: 0.0000, avg: 0.0000, multirc_loss: 0.6969
+03/16 09:11:41 PM: Evaluate: task multirc, batch 37 (606): ans_f1: 0.3730, qst_f1: 0.2138, em: 0.0145, avg: 0.1938, multirc_loss: 0.6967
+03/16 09:11:51 PM: Evaluate: task multirc, batch 73 (606): ans_f1: 0.3787, qst_f1: 0.2395, em: 0.0323, avg: 0.2055, multirc_loss: 0.6942
+03/16 09:12:01 PM: Evaluate: task multirc, batch 109 (606): ans_f1: 0.3959, qst_f1: 0.2541, em: 0.0238, avg: 0.2099, multirc_loss: 0.6914
+03/16 09:12:12 PM: Evaluate: task multirc, batch 146 (606): ans_f1: 0.3991, qst_f1: 0.2638, em: 0.0267, avg: 0.2129, multirc_loss: 0.6929
+03/16 09:12:22 PM: Evaluate: task multirc, batch 182 (606): ans_f1: 0.3665, qst_f1: 0.2338, em: 0.0253, avg: 0.1959, multirc_loss: 0.6907
+03/16 09:12:32 PM: Evaluate: task multirc, batch 218 (606): ans_f1: 0.3535, qst_f1: 0.2161, em: 0.0355, avg: 0.1945, multirc_loss: 0.6873
+03/16 09:12:42 PM: Evaluate: task multirc, batch 254 (606): ans_f1: 0.3693, qst_f1: 0.2325, em: 0.0377, avg: 0.2035, multirc_loss: 0.6876
+03/16 09:12:53 PM: Evaluate: task multirc, batch 290 (606): ans_f1: 0.3933, qst_f1: 0.2587, em: 0.0374, avg: 0.2153, multirc_loss: 0.6879
+03/16 09:13:03 PM: Evaluate: task multirc, batch 327 (606): ans_f1: 0.4133, qst_f1: 0.2798, em: 0.0351, avg: 0.2242, multirc_loss: 0.6885
+03/16 09:13:14 PM: Evaluate: task multirc, batch 363 (606): ans_f1: 0.4077, qst_f1: 0.2775, em: 0.0336, avg: 0.2207, multirc_loss: 0.6886
+03/16 09:13:24 PM: Evaluate: task multirc, batch 399 (606): ans_f1: 0.4088, qst_f1: 0.2805, em: 0.0351, avg: 0.2220, multirc_loss: 0.6881
+03/16 09:13:35 PM: Evaluate: task multirc, batch 435 (606): ans_f1: 0.4129, qst_f1: 0.2815, em: 0.0357, avg: 0.2243, multirc_loss: 0.6884
+03/16 09:13:45 PM: Evaluate: task multirc, batch 472 (606): ans_f1: 0.4082, qst_f1: 0.2745, em: 0.0367, avg: 0.2224, multirc_loss: 0.6881
+03/16 09:13:56 PM: Evaluate: task multirc, batch 508 (606): ans_f1: 0.4017, qst_f1: 0.2686, em: 0.0347, avg: 0.2182, multirc_loss: 0.6880
+03/16 09:14:06 PM: Evaluate: task multirc, batch 542 (606): ans_f1: 0.4023, qst_f1: 0.2661, em: 0.0347, avg: 0.2185, multirc_loss: 0.6876
+03/16 09:14:17 PM: Evaluate: task multirc, batch 577 (606): ans_f1: 0.4012, qst_f1: 0.2648, em: 0.0341, avg: 0.2177, multirc_loss: 0.6869
+03/16 09:14:26 PM: Updating LR scheduler:
+03/16 09:14:26 PM: 	Best result seen so far for macro_avg: 0.304
+03/16 09:14:26 PM: 	# validation passes without improvement: 0
+03/16 09:14:26 PM: Ran out of early stopping patience. Stopping training.
+03/16 09:14:26 PM: multirc_loss: training: 0.705928 validation: 0.687508
+03/16 09:14:26 PM: macro_avg: validation: 0.216071
+03/16 09:14:26 PM: micro_avg: validation: 0.216071
+03/16 09:14:26 PM: multirc_ans_f1: training: 0.549296 validation: 0.400662
+03/16 09:14:26 PM: multirc_qst_f1: training: 0.304762 validation: 0.265259
+03/16 09:14:26 PM: multirc_em: training: 0.492997 validation: 0.031480
+03/16 09:14:26 PM: multirc_avg: training: 0.521146 validation: 0.216071
+03/16 09:14:26 PM: Global learning rate: 3.75e-05
+03/16 09:14:26 PM: Saving checkpoints to: /home/soujanya/Projects/jiant/jiant-baseline-bert/mtl-multirc
+03/16 09:14:26 PM: Stopped training after 7 validation checks
+03/16 09:14:26 PM: Trained multirc for 350 steps or 0.103 epochs
+03/16 09:14:26 PM: ***** VALIDATION RESULTS *****
+03/16 09:14:26 PM: multirc_avg (for best val pass 1): multirc_loss: 0.74832, macro_avg: 0.30429, micro_avg: 0.30429, multirc_ans_f1: 0.59913, multirc_qst_f1: 0.59017, multirc_em: 0.00944, multirc_avg: 0.30429
+03/16 09:14:26 PM: micro_avg (for best val pass 1): multirc_loss: 0.74832, macro_avg: 0.30429, micro_avg: 0.30429, multirc_ans_f1: 0.59913, multirc_qst_f1: 0.59017, multirc_em: 0.00944, multirc_avg: 0.30429
+03/16 09:14:26 PM: macro_avg (for best val pass 1): multirc_loss: 0.74832, macro_avg: 0.30429, micro_avg: 0.30429, multirc_ans_f1: 0.59913, multirc_qst_f1: 0.59017, multirc_em: 0.00944, multirc_avg: 0.30429
+03/16 09:14:26 PM: Not loading task-specific parameters for task: multirc
+03/16 09:14:26 PM: Loaded model state from /home/soujanya/Projects/jiant/jiant-baseline-bert/mtl-multirc/model_state_pretrain_val_1.best.th
+03/16 09:14:26 PM: patience = 5
+03/16 09:14:26 PM: val_interval = 10
+03/16 09:14:26 PM: max_vals = 10
+03/16 09:14:26 PM: cuda_device = -1
+03/16 09:14:26 PM: grad_norm = 5.0
+03/16 09:14:26 PM: grad_clipping = None
+03/16 09:14:26 PM: lr_decay = 0.99
+03/16 09:14:26 PM: min_lr = 1e-06
+03/16 09:14:26 PM: keep_all_checkpoints = 0
+03/16 09:14:26 PM: val_data_limit = 5000
+03/16 09:14:26 PM: max_epochs = -1
+03/16 09:14:26 PM: dec_val_scale = 250
+03/16 09:14:26 PM: training_data_fraction = 1
+03/16 09:14:26 PM: accumulation_steps = 1
+03/16 09:14:26 PM: type = adam
+03/16 09:14:26 PM: parameter_groups = None
+03/16 09:14:26 PM: Number of trainable parameters: 410274
+03/16 09:14:26 PM: infer_type_and_cast = True
+03/16 09:14:26 PM: Converting Params object to dict; logging of default values will not occur when dictionary parameters are used subsequently.
+03/16 09:14:26 PM: CURRENTLY DEFINED PARAMETERS: 
+03/16 09:14:26 PM: lr = 0.0003
+03/16 09:14:26 PM: amsgrad = True
+03/16 09:14:26 PM: type = reduce_on_plateau
+03/16 09:14:26 PM: Converting Params object to dict; logging of default values will not occur when dictionary parameters are used subsequently.
+03/16 09:14:26 PM: CURRENTLY DEFINED PARAMETERS: 
+03/16 09:14:26 PM: mode = max
+03/16 09:14:26 PM: factor = 0.5
+03/16 09:14:26 PM: patience = 1
+03/16 09:14:26 PM: threshold = 0.0001
+03/16 09:14:26 PM: threshold_mode = abs
+03/16 09:14:26 PM: verbose = True
+03/16 09:14:26 PM: Starting training without restoring from a checkpoint.
+03/16 09:14:26 PM: Training examples per task, before any subsampling: {'multirc': 27243}
+03/16 09:14:26 PM: Beginning training with stopping criteria based on metric: multirc_avg
+03/16 09:14:31 PM: ***** Step 10 / Validation 1 *****
+03/16 09:14:31 PM: multirc: trained on 10 steps (10 batches) since val, 0.003 epochs
+03/16 09:14:31 PM: Validating...
+03/16 09:14:36 PM: Evaluate: task multirc, batch 18 (606): ans_f1: 0.5414, qst_f1: 0.4667, em: 0.0000, avg: 0.2707, multirc_loss: 0.7018
+03/16 09:14:46 PM: Evaluate: task multirc, batch 55 (606): ans_f1: 0.5731, qst_f1: 0.4539, em: 0.0306, avg: 0.3018, multirc_loss: 0.6937
+03/16 09:14:56 PM: Evaluate: task multirc, batch 91 (606): ans_f1: 0.5668, qst_f1: 0.4713, em: 0.0340, avg: 0.3004, multirc_loss: 0.6952
+03/16 09:15:07 PM: Evaluate: task multirc, batch 127 (606): ans_f1: 0.5516, qst_f1: 0.4645, em: 0.0305, avg: 0.2910, multirc_loss: 0.6950
+03/16 09:15:17 PM: Evaluate: task multirc, batch 165 (606): ans_f1: 0.5242, qst_f1: 0.4366, em: 0.0242, avg: 0.2742, multirc_loss: 0.6964
+03/16 09:15:27 PM: Evaluate: task multirc, batch 201 (606): ans_f1: 0.5172, qst_f1: 0.4150, em: 0.0288, avg: 0.2730, multirc_loss: 0.6951
+03/16 09:15:37 PM: Evaluate: task multirc, batch 237 (606): ans_f1: 0.5016, qst_f1: 0.3929, em: 0.0270, avg: 0.2643, multirc_loss: 0.6943
+03/16 09:15:48 PM: Evaluate: task multirc, batch 274 (606): ans_f1: 0.5157, qst_f1: 0.4115, em: 0.0230, avg: 0.2693, multirc_loss: 0.6946
+03/16 09:15:58 PM: Evaluate: task multirc, batch 310 (606): ans_f1: 0.5195, qst_f1: 0.4205, em: 0.0207, avg: 0.2701, multirc_loss: 0.6956
+03/16 09:16:08 PM: Evaluate: task multirc, batch 347 (606): ans_f1: 0.5223, qst_f1: 0.4270, em: 0.0203, avg: 0.2713, multirc_loss: 0.6953
+03/16 09:16:19 PM: Evaluate: task multirc, batch 382 (606): ans_f1: 0.5286, qst_f1: 0.4307, em: 0.0202, avg: 0.2744, multirc_loss: 0.6946
+03/16 09:16:29 PM: Evaluate: task multirc, batch 419 (606): ans_f1: 0.5407, qst_f1: 0.4466, em: 0.0330, avg: 0.2869, multirc_loss: 0.6934
+03/16 09:16:40 PM: Evaluate: task multirc, batch 456 (606): ans_f1: 0.5332, qst_f1: 0.4301, em: 0.0327, avg: 0.2829, multirc_loss: 0.6934
+03/16 09:16:50 PM: Evaluate: task multirc, batch 493 (606): ans_f1: 0.5294, qst_f1: 0.4278, em: 0.0367, avg: 0.2831, multirc_loss: 0.6938
+03/16 09:17:01 PM: Evaluate: task multirc, batch 529 (606): ans_f1: 0.5317, qst_f1: 0.4322, em: 0.0358, avg: 0.2837, multirc_loss: 0.6933
+03/16 09:17:11 PM: Evaluate: task multirc, batch 565 (606): ans_f1: 0.5349, qst_f1: 0.4395, em: 0.0394, avg: 0.2871, multirc_loss: 0.6933
+03/16 09:17:22 PM: Evaluate: task multirc, batch 601 (606): ans_f1: 0.5377, qst_f1: 0.4436, em: 0.0371, avg: 0.2874, multirc_loss: 0.6936
+03/16 09:17:24 PM: Best result seen so far for multirc.
+03/16 09:17:24 PM: Best result seen so far for micro.
+03/16 09:17:24 PM: Best result seen so far for macro.
+03/16 09:17:24 PM: Updating LR scheduler:
+03/16 09:17:24 PM: 	Best result seen so far for macro_avg: 0.287
+03/16 09:17:24 PM: 	# validation passes without improvement: 0
+03/16 09:17:24 PM: multirc_loss: training: 0.715244 validation: 0.693701
+03/16 09:17:24 PM: macro_avg: validation: 0.286585
+03/16 09:17:24 PM: micro_avg: validation: 0.286585
+03/16 09:17:24 PM: multirc_ans_f1: training: 0.531646 validation: 0.536444
+03/16 09:17:24 PM: multirc_qst_f1: training: 0.262500 validation: 0.441246
+03/16 09:17:24 PM: multirc_em: training: 0.537500 validation: 0.036726
+03/16 09:17:24 PM: multirc_avg: training: 0.534573 validation: 0.286585
+03/16 09:17:24 PM: Global learning rate: 0.0003
+03/16 09:17:24 PM: Saving checkpoints to: /home/soujanya/Projects/jiant/jiant-baseline-bert/mtl-multirc
+03/16 09:17:27 PM: ***** Step 20 / Validation 2 *****
+03/16 09:17:28 PM: multirc: trained on 10 steps (10 batches) since val, 0.003 epochs
+03/16 09:17:28 PM: Validating...
+03/16 09:17:32 PM: Evaluate: task multirc, batch 15 (606): ans_f1: 0.0323, qst_f1: 0.0247, em: 0.0000, avg: 0.0161, multirc_loss: 0.7072
+03/16 09:17:42 PM: Evaluate: task multirc, batch 52 (606): ans_f1: 0.0545, qst_f1: 0.0256, em: 0.0000, avg: 0.0273, multirc_loss: 0.7060
+03/16 09:17:52 PM: Evaluate: task multirc, batch 88 (606): ans_f1: 0.0932, qst_f1: 0.0486, em: 0.0070, avg: 0.0501, multirc_loss: 0.6954
+03/16 09:18:03 PM: Evaluate: task multirc, batch 125 (606): ans_f1: 0.0695, qst_f1: 0.0358, em: 0.0052, avg: 0.0373, multirc_loss: 0.6897
+03/16 09:18:13 PM: Evaluate: task multirc, batch 163 (606): ans_f1: 0.0940, qst_f1: 0.0446, em: 0.0081, avg: 0.0511, multirc_loss: 0.6842
+03/16 09:18:23 PM: Evaluate: task multirc, batch 199 (606): ans_f1: 0.0784, qst_f1: 0.0356, em: 0.0097, avg: 0.0441, multirc_loss: 0.6847
+03/16 09:18:34 PM: Evaluate: task multirc, batch 236 (606): ans_f1: 0.0715, qst_f1: 0.0324, em: 0.0136, avg: 0.0425, multirc_loss: 0.6796
+03/16 09:18:44 PM: Evaluate: task multirc, batch 273 (606): ans_f1: 0.0837, qst_f1: 0.0376, em: 0.0115, avg: 0.0476, multirc_loss: 0.6802
+03/16 09:18:54 PM: Evaluate: task multirc, batch 309 (606): ans_f1: 0.0756, qst_f1: 0.0337, em: 0.0104, avg: 0.0430, multirc_loss: 0.6788
+03/16 09:19:05 PM: Evaluate: task multirc, batch 346 (606): ans_f1: 0.0773, qst_f1: 0.0356, em: 0.0111, avg: 0.0442, multirc_loss: 0.6775
+03/16 09:19:15 PM: Evaluate: task multirc, batch 381 (606): ans_f1: 0.0699, qst_f1: 0.0325, em: 0.0084, avg: 0.0392, multirc_loss: 0.6788
+03/16 09:19:25 PM: Evaluate: task multirc, batch 418 (606): ans_f1: 0.0725, qst_f1: 0.0341, em: 0.0090, avg: 0.0408, multirc_loss: 0.6804
+03/16 09:19:36 PM: Evaluate: task multirc, batch 454 (606): ans_f1: 0.0667, qst_f1: 0.0310, em: 0.0082, avg: 0.0374, multirc_loss: 0.6823
+03/16 09:19:46 PM: Evaluate: task multirc, batch 491 (606): ans_f1: 0.0786, qst_f1: 0.0354, em: 0.0101, avg: 0.0444, multirc_loss: 0.6815
+03/16 09:19:57 PM: Evaluate: task multirc, batch 527 (606): ans_f1: 0.0739, qst_f1: 0.0334, em: 0.0096, avg: 0.0417, multirc_loss: 0.6805
+03/16 09:20:07 PM: Evaluate: task multirc, batch 562 (606): ans_f1: 0.0717, qst_f1: 0.0330, em: 0.0090, avg: 0.0404, multirc_loss: 0.6799
+03/16 09:20:18 PM: Evaluate: task multirc, batch 598 (606): ans_f1: 0.0690, qst_f1: 0.0316, em: 0.0096, avg: 0.0393, multirc_loss: 0.6788
+03/16 09:20:21 PM: Updating LR scheduler:
+03/16 09:20:21 PM: 	Best result seen so far for macro_avg: 0.287
+03/16 09:20:21 PM: 	# validation passes without improvement: 1
+03/16 09:20:21 PM: multirc_loss: training: 0.713034 validation: 0.680170
+03/16 09:20:21 PM: macro_avg: validation: 0.038065
+03/16 09:20:21 PM: micro_avg: validation: 0.038065
+03/16 09:20:21 PM: multirc_ans_f1: training: 0.424242 validation: 0.067736
+03/16 09:20:21 PM: multirc_qst_f1: training: 0.179487 validation: 0.031126
+03/16 09:20:21 PM: multirc_em: training: 0.512821 validation: 0.008395
+03/16 09:20:21 PM: multirc_avg: training: 0.468531 validation: 0.038065
+03/16 09:20:21 PM: Global learning rate: 0.0003
+03/16 09:20:21 PM: Saving checkpoints to: /home/soujanya/Projects/jiant/jiant-baseline-bert/mtl-multirc
+03/16 09:20:24 PM: ***** Step 30 / Validation 3 *****
+03/16 09:20:24 PM: multirc: trained on 10 steps (10 batches) since val, 0.003 epochs
+03/16 09:20:24 PM: Validating...
+03/16 09:20:28 PM: Evaluate: task multirc, batch 12 (606): ans_f1: 0.0000, qst_f1: 0.0000, em: 0.0000, avg: 0.0000, multirc_loss: 0.6897
+03/16 09:20:38 PM: Evaluate: task multirc, batch 49 (606): ans_f1: 0.0000, qst_f1: 0.0000, em: 0.0000, avg: 0.0000, multirc_loss: 0.7147
+03/16 09:20:48 PM: Evaluate: task multirc, batch 85 (606): ans_f1: 0.0000, qst_f1: 0.0000, em: 0.0000, avg: 0.0000, multirc_loss: 0.7035
+03/16 09:20:59 PM: Evaluate: task multirc, batch 122 (606): ans_f1: 0.0000, qst_f1: 0.0000, em: 0.0000, avg: 0.0000, multirc_loss: 0.6961
+03/16 09:21:09 PM: Evaluate: task multirc, batch 160 (606): ans_f1: 0.0000, qst_f1: 0.0000, em: 0.0000, avg: 0.0000, multirc_loss: 0.6866
+03/16 09:21:20 PM: Evaluate: task multirc, batch 194 (606): ans_f1: 0.0000, qst_f1: 0.0000, em: 0.0000, avg: 0.0000, multirc_loss: 0.6893
+03/16 09:21:30 PM: Evaluate: task multirc, batch 230 (606): ans_f1: 0.0000, qst_f1: 0.0000, em: 0.0084, avg: 0.0042, multirc_loss: 0.6788
+03/16 09:21:40 PM: Evaluate: task multirc, batch 266 (606): ans_f1: 0.0000, qst_f1: 0.0000, em: 0.0071, avg: 0.0036, multirc_loss: 0.6806
+03/16 09:21:51 PM: Evaluate: task multirc, batch 298 (606): ans_f1: 0.0000, qst_f1: 0.0000, em: 0.0043, avg: 0.0021, multirc_loss: 0.6798
+03/16 09:22:02 PM: Evaluate: task multirc, batch 327 (606): ans_f1: 0.0000, qst_f1: 0.0000, em: 0.0039, avg: 0.0019, multirc_loss: 0.6789
+03/16 09:22:12 PM: Evaluate: task multirc, batch 360 (606): ans_f1: 0.0000, qst_f1: 0.0000, em: 0.0036, avg: 0.0018, multirc_loss: 0.6809
+03/16 09:22:23 PM: Evaluate: task multirc, batch 395 (606): ans_f1: 0.0000, qst_f1: 0.0000, em: 0.0032, avg: 0.0016, multirc_loss: 0.6813
+03/16 09:22:33 PM: Evaluate: task multirc, batch 428 (606): ans_f1: 0.0000, qst_f1: 0.0000, em: 0.0029, avg: 0.0015, multirc_loss: 0.6826
+03/16 09:22:44 PM: Evaluate: task multirc, batch 464 (606): ans_f1: 0.0000, qst_f1: 0.0000, em: 0.0040, avg: 0.0020, multirc_loss: 0.6848
+03/16 09:22:54 PM: Evaluate: task multirc, batch 500 (606): ans_f1: 0.0000, qst_f1: 0.0000, em: 0.0038, avg: 0.0019, multirc_loss: 0.6839
+03/16 09:23:05 PM: Evaluate: task multirc, batch 535 (606): ans_f1: 0.0000, qst_f1: 0.0000, em: 0.0035, avg: 0.0018, multirc_loss: 0.6828
+03/16 09:23:15 PM: Evaluate: task multirc, batch 569 (606): ans_f1: 0.0000, qst_f1: 0.0000, em: 0.0034, avg: 0.0017, multirc_loss: 0.6812
+03/16 09:23:26 PM: Evaluate: task multirc, batch 605 (606): ans_f1: 0.0000, qst_f1: 0.0000, em: 0.0032, avg: 0.0016, multirc_loss: 0.6818
+03/16 09:23:27 PM: Updating LR scheduler:
+03/16 09:23:27 PM: 	Best result seen so far for macro_avg: 0.287
+03/16 09:23:27 PM: 	# validation passes without improvement: 0
+03/16 09:23:27 PM: multirc_loss: training: 0.712781 validation: 0.682082
+03/16 09:23:27 PM: macro_avg: validation: 0.001574
+03/16 09:23:27 PM: micro_avg: validation: 0.001574
+03/16 09:23:27 PM: multirc_ans_f1: training: 0.274510 validation: 0.000000
+03/16 09:23:27 PM: multirc_qst_f1: training: 0.088608 validation: 0.000000
+03/16 09:23:27 PM: multirc_em: training: 0.544304 validation: 0.003148
+03/16 09:23:27 PM: multirc_avg: training: 0.409407 validation: 0.001574
+03/16 09:23:27 PM: Global learning rate: 0.00015
+03/16 09:23:27 PM: Saving checkpoints to: /home/soujanya/Projects/jiant/jiant-baseline-bert/mtl-multirc
+03/16 09:23:31 PM: ***** Step 40 / Validation 4 *****
+03/16 09:23:31 PM: multirc: trained on 10 steps (10 batches) since val, 0.003 epochs
+03/16 09:23:31 PM: Validating...
+03/16 09:23:36 PM: Evaluate: task multirc, batch 19 (606): ans_f1: 0.0000, qst_f1: 0.0000, em: 0.0000, avg: 0.0000, multirc_loss: 0.7098
+03/16 09:23:46 PM: Evaluate: task multirc, batch 55 (606): ans_f1: 0.0087, qst_f1: 0.0041, em: 0.0000, avg: 0.0043, multirc_loss: 0.7112
+03/16 09:23:57 PM: Evaluate: task multirc, batch 91 (606): ans_f1: 0.0500, qst_f1: 0.0247, em: 0.0068, avg: 0.0284, multirc_loss: 0.6953
+03/16 09:24:07 PM: Evaluate: task multirc, batch 127 (606): ans_f1: 0.0375, qst_f1: 0.0184, em: 0.0051, avg: 0.0213, multirc_loss: 0.6898
+03/16 09:24:17 PM: Evaluate: task multirc, batch 164 (606): ans_f1: 0.0436, qst_f1: 0.0183, em: 0.0040, avg: 0.0238, multirc_loss: 0.6839
+03/16 09:24:27 PM: Evaluate: task multirc, batch 199 (606): ans_f1: 0.0361, qst_f1: 0.0146, em: 0.0065, avg: 0.0213, multirc_loss: 0.6846
+03/16 09:24:38 PM: Evaluate: task multirc, batch 235 (606): ans_f1: 0.0318, qst_f1: 0.0123, em: 0.0109, avg: 0.0213, multirc_loss: 0.6787
+03/16 09:24:48 PM: Evaluate: task multirc, batch 270 (606): ans_f1: 0.0358, qst_f1: 0.0156, em: 0.0070, avg: 0.0214, multirc_loss: 0.6796
+03/16 09:24:59 PM: Evaluate: task multirc, batch 300 (606): ans_f1: 0.0326, qst_f1: 0.0142, em: 0.0064, avg: 0.0195, multirc_loss: 0.6786
+03/16 09:25:09 PM: Evaluate: task multirc, batch 336 (606): ans_f1: 0.0342, qst_f1: 0.0151, em: 0.0057, avg: 0.0199, multirc_loss: 0.6782
+03/16 09:25:20 PM: Evaluate: task multirc, batch 365 (606): ans_f1: 0.0313, qst_f1: 0.0141, em: 0.0053, avg: 0.0183, multirc_loss: 0.6792
+03/16 09:25:30 PM: Evaluate: task multirc, batch 400 (606): ans_f1: 0.0299, qst_f1: 0.0138, em: 0.0048, avg: 0.0173, multirc_loss: 0.6795
+03/16 09:25:41 PM: Evaluate: task multirc, batch 436 (606): ans_f1: 0.0284, qst_f1: 0.0133, em: 0.0043, avg: 0.0163, multirc_loss: 0.6812
+03/16 09:25:51 PM: Evaluate: task multirc, batch 472 (606): ans_f1: 0.0263, qst_f1: 0.0122, em: 0.0052, avg: 0.0157, multirc_loss: 0.6813
+03/16 09:26:02 PM: Evaluate: task multirc, batch 508 (606): ans_f1: 0.0310, qst_f1: 0.0144, em: 0.0050, avg: 0.0180, multirc_loss: 0.6806
+03/16 09:26:13 PM: Evaluate: task multirc, batch 544 (606): ans_f1: 0.0290, qst_f1: 0.0134, em: 0.0046, avg: 0.0168, multirc_loss: 0.6803
+03/16 09:26:23 PM: Evaluate: task multirc, batch 580 (606): ans_f1: 0.0276, qst_f1: 0.0128, em: 0.0044, avg: 0.0160, multirc_loss: 0.6783
+03/16 09:26:31 PM: Updating LR scheduler:
+03/16 09:26:31 PM: 	Best result seen so far for macro_avg: 0.287
+03/16 09:26:31 PM: 	# validation passes without improvement: 1
+03/16 09:26:31 PM: multirc_loss: training: 0.711716 validation: 0.679913
+03/16 09:26:31 PM: macro_avg: validation: 0.015213
+03/16 09:26:31 PM: micro_avg: validation: 0.015213
+03/16 09:26:31 PM: multirc_ans_f1: training: 0.232558 validation: 0.026230
+03/16 09:26:31 PM: multirc_qst_f1: training: 0.063291 validation: 0.012205
+03/16 09:26:31 PM: multirc_em: training: 0.582278 validation: 0.004197
+03/16 09:26:31 PM: multirc_avg: training: 0.407418 validation: 0.015213
+03/16 09:26:31 PM: Global learning rate: 0.00015
+03/16 09:26:31 PM: Saving checkpoints to: /home/soujanya/Projects/jiant/jiant-baseline-bert/mtl-multirc
+03/16 09:26:34 PM: Update 46: task multirc, steps since last val 6 (total steps = 46): ans_f1: 0.3333, qst_f1: 0.1250, em: 0.5000, avg: 0.4167, multirc_loss: 0.7493
+03/16 09:26:35 PM: ***** Step 50 / Validation 5 *****
+03/16 09:26:35 PM: multirc: trained on 10 steps (10 batches) since val, 0.003 epochs
+03/16 09:26:35 PM: Validating...
+03/16 09:26:44 PM: Evaluate: task multirc, batch 30 (606): ans_f1: 0.0462, qst_f1: 0.0339, em: 0.0169, avg: 0.0316, multirc_loss: 0.7039
+03/16 09:26:54 PM: Evaluate: task multirc, batch 59 (606): ans_f1: 0.0909, qst_f1: 0.0396, em: 0.0192, avg: 0.0551, multirc_loss: 0.7007
+03/16 09:27:04 PM: Evaluate: task multirc, batch 94 (606): ans_f1: 0.1635, qst_f1: 0.0765, em: 0.0133, avg: 0.0884, multirc_loss: 0.6910
+03/16 09:27:15 PM: Evaluate: task multirc, batch 129 (606): ans_f1: 0.1304, qst_f1: 0.0604, em: 0.0100, avg: 0.0702, multirc_loss: 0.6882
+03/16 09:27:25 PM: Evaluate: task multirc, batch 166 (606): ans_f1: 0.1431, qst_f1: 0.0687, em: 0.0160, avg: 0.0795, multirc_loss: 0.6855
+03/16 09:27:35 PM: Evaluate: task multirc, batch 202 (606): ans_f1: 0.1214, qst_f1: 0.0548, em: 0.0160, avg: 0.0687, multirc_loss: 0.6842
+03/16 09:27:46 PM: Evaluate: task multirc, batch 238 (606): ans_f1: 0.1182, qst_f1: 0.0569, em: 0.0269, avg: 0.0725, multirc_loss: 0.6806
+03/16 09:27:56 PM: Evaluate: task multirc, batch 274 (606): ans_f1: 0.1460, qst_f1: 0.0726, em: 0.0253, avg: 0.0856, multirc_loss: 0.6815
+03/16 09:28:06 PM: Evaluate: task multirc, batch 309 (606): ans_f1: 0.1393, qst_f1: 0.0691, em: 0.0228, avg: 0.0810, multirc_loss: 0.6804
+03/16 09:28:17 PM: Evaluate: task multirc, batch 345 (606): ans_f1: 0.1579, qst_f1: 0.0782, em: 0.0204, avg: 0.0892, multirc_loss: 0.6797
+03/16 09:28:27 PM: Evaluate: task multirc, batch 372 (606): ans_f1: 0.1464, qst_f1: 0.0728, em: 0.0190, avg: 0.0827, multirc_loss: 0.6808
+03/16 09:28:37 PM: Evaluate: task multirc, batch 407 (606): ans_f1: 0.1442, qst_f1: 0.0747, em: 0.0218, avg: 0.0830, multirc_loss: 0.6818
+03/16 09:28:48 PM: Evaluate: task multirc, batch 434 (606): ans_f1: 0.1391, qst_f1: 0.0712, em: 0.0229, avg: 0.0810, multirc_loss: 0.6821
+03/16 09:28:58 PM: Evaluate: task multirc, batch 469 (606): ans_f1: 0.1315, qst_f1: 0.0672, em: 0.0224, avg: 0.0769, multirc_loss: 0.6826
+03/16 09:29:09 PM: Evaluate: task multirc, batch 504 (606): ans_f1: 0.1333, qst_f1: 0.0687, em: 0.0224, avg: 0.0779, multirc_loss: 0.6820
+03/16 09:29:20 PM: Evaluate: task multirc, batch 538 (606): ans_f1: 0.1288, qst_f1: 0.0664, em: 0.0210, avg: 0.0749, multirc_loss: 0.6814
+03/16 09:29:30 PM: Evaluate: task multirc, batch 566 (606): ans_f1: 0.1282, qst_f1: 0.0677, em: 0.0213, avg: 0.0748, multirc_loss: 0.6808
+03/16 09:29:41 PM: Evaluate: task multirc, batch 601 (606): ans_f1: 0.1308, qst_f1: 0.0680, em: 0.0201, avg: 0.0755, multirc_loss: 0.6806
+03/16 09:29:43 PM: Updating LR scheduler:
+03/16 09:29:43 PM: 	Best result seen so far for macro_avg: 0.287
+03/16 09:29:43 PM: 	# validation passes without improvement: 0
+03/16 09:29:43 PM: multirc_loss: training: 0.759028 validation: 0.681186
+03/16 09:29:43 PM: macro_avg: validation: 0.074647
+03/16 09:29:43 PM: micro_avg: validation: 0.074647
+03/16 09:29:43 PM: multirc_ans_f1: training: 0.322581 validation: 0.129357
+03/16 09:29:43 PM: multirc_qst_f1: training: 0.125000 validation: 0.067406
+03/16 09:29:43 PM: multirc_em: training: 0.475000 validation: 0.019937
+03/16 09:29:43 PM: multirc_avg: training: 0.398790 validation: 0.074647
+03/16 09:29:43 PM: Global learning rate: 7.5e-05
+03/16 09:29:43 PM: Saving checkpoints to: /home/soujanya/Projects/jiant/jiant-baseline-bert/mtl-multirc
+03/16 09:29:47 PM: ***** Step 60 / Validation 6 *****
+03/16 09:29:47 PM: multirc: trained on 10 steps (10 batches) since val, 0.003 epochs
+03/16 09:29:47 PM: Validating...
+03/16 09:29:51 PM: Evaluate: task multirc, batch 14 (606): ans_f1: 0.1311, qst_f1: 0.1067, em: 0.0400, avg: 0.0856, multirc_loss: 0.6950
+03/16 09:30:01 PM: Evaluate: task multirc, batch 47 (606): ans_f1: 0.1250, qst_f1: 0.0569, em: 0.0119, avg: 0.0685, multirc_loss: 0.6964
+03/16 09:30:11 PM: Evaluate: task multirc, batch 83 (606): ans_f1: 0.1547, qst_f1: 0.0701, em: 0.0146, avg: 0.0846, multirc_loss: 0.6928
+03/16 09:30:22 PM: Evaluate: task multirc, batch 120 (606): ans_f1: 0.1362, qst_f1: 0.0640, em: 0.0108, avg: 0.0735, multirc_loss: 0.6897
+03/16 09:30:32 PM: Evaluate: task multirc, batch 158 (606): ans_f1: 0.1506, qst_f1: 0.0714, em: 0.0124, avg: 0.0815, multirc_loss: 0.6861
+03/16 09:30:42 PM: Evaluate: task multirc, batch 195 (606): ans_f1: 0.1277, qst_f1: 0.0592, em: 0.0134, avg: 0.0705, multirc_loss: 0.6861
+03/16 09:30:53 PM: Evaluate: task multirc, batch 230 (606): ans_f1: 0.1216, qst_f1: 0.0572, em: 0.0225, avg: 0.0720, multirc_loss: 0.6804
+03/16 09:31:03 PM: Evaluate: task multirc, batch 266 (606): ans_f1: 0.1518, qst_f1: 0.0753, em: 0.0237, avg: 0.0878, multirc_loss: 0.6814
+03/16 09:31:13 PM: Evaluate: task multirc, batch 300 (606): ans_f1: 0.1495, qst_f1: 0.0741, em: 0.0191, avg: 0.0843, multirc_loss: 0.6810
+03/16 09:31:24 PM: Evaluate: task multirc, batch 336 (606): ans_f1: 0.1697, qst_f1: 0.0834, em: 0.0189, avg: 0.0943, multirc_loss: 0.6809
+03/16 09:31:34 PM: Evaluate: task multirc, batch 364 (606): ans_f1: 0.1573, qst_f1: 0.0779, em: 0.0177, avg: 0.0875, multirc_loss: 0.6815
+03/16 09:31:45 PM: Evaluate: task multirc, batch 399 (606): ans_f1: 0.1503, qst_f1: 0.0740, em: 0.0176, avg: 0.0839, multirc_loss: 0.6815
+03/16 09:31:55 PM: Evaluate: task multirc, batch 427 (606): ans_f1: 0.1502, qst_f1: 0.0770, em: 0.0206, avg: 0.0854, multirc_loss: 0.6817
+03/16 09:32:06 PM: Evaluate: task multirc, batch 463 (606): ans_f1: 0.1389, qst_f1: 0.0696, em: 0.0186, avg: 0.0788, multirc_loss: 0.6829
+03/16 09:32:16 PM: Evaluate: task multirc, batch 500 (606): ans_f1: 0.1414, qst_f1: 0.0724, em: 0.0213, avg: 0.0814, multirc_loss: 0.6824
+03/16 09:32:27 PM: Evaluate: task multirc, batch 535 (606): ans_f1: 0.1363, qst_f1: 0.0696, em: 0.0199, avg: 0.0781, multirc_loss: 0.6816
+03/16 09:32:37 PM: Evaluate: task multirc, batch 571 (606): ans_f1: 0.1357, qst_f1: 0.0707, em: 0.0200, avg: 0.0779, multirc_loss: 0.6807
+03/16 09:32:48 PM: Updating LR scheduler:
+03/16 09:32:48 PM: 	Best result seen so far for macro_avg: 0.287
+03/16 09:32:48 PM: 	# validation passes without improvement: 1
+03/16 09:32:48 PM: multirc_loss: training: 0.719864 validation: 0.681405
+03/16 09:32:48 PM: macro_avg: validation: 0.077852
+03/16 09:32:48 PM: micro_avg: validation: 0.077852
+03/16 09:32:48 PM: multirc_ans_f1: training: 0.271186 validation: 0.136816
+03/16 09:32:48 PM: multirc_qst_f1: training: 0.106667 validation: 0.070391
+03/16 09:32:48 PM: multirc_em: training: 0.440000 validation: 0.018888
+03/16 09:32:48 PM: multirc_avg: training: 0.355593 validation: 0.077852
+03/16 09:32:48 PM: Global learning rate: 7.5e-05
+03/16 09:32:48 PM: Saving checkpoints to: /home/soujanya/Projects/jiant/jiant-baseline-bert/mtl-multirc
+03/16 09:32:48 PM: Update 61: task multirc, steps since last val 1 (total steps = 61): ans_f1: 0.5000, qst_f1: 0.2500, em: 0.5000, avg: 0.5000, multirc_loss: 0.7849
+03/16 09:32:52 PM: ***** Step 70 / Validation 7 *****
+03/16 09:32:52 PM: multirc: trained on 10 steps (10 batches) since val, 0.003 epochs
+03/16 09:32:52 PM: Validating...
+03/16 09:32:58 PM: Evaluate: task multirc, batch 23 (606): ans_f1: 0.0000, qst_f1: 0.0000, em: 0.0233, avg: 0.0116, multirc_loss: 0.7007
+03/16 09:33:09 PM: Evaluate: task multirc, batch 55 (606): ans_f1: 0.0340, qst_f1: 0.0126, em: 0.0000, avg: 0.0170, multirc_loss: 0.7066
+03/16 09:33:19 PM: Evaluate: task multirc, batch 86 (606): ans_f1: 0.0793, qst_f1: 0.0353, em: 0.0142, avg: 0.0468, multirc_loss: 0.6941
+03/16 09:33:29 PM: Evaluate: task multirc, batch 121 (606): ans_f1: 0.0593, qst_f1: 0.0248, em: 0.0107, avg: 0.0350, multirc_loss: 0.6901
+03/16 09:33:40 PM: Evaluate: task multirc, batch 158 (606): ans_f1: 0.0736, qst_f1: 0.0319, em: 0.0083, avg: 0.0409, multirc_loss: 0.6845
+03/16 09:33:50 PM: Evaluate: task multirc, batch 192 (606): ans_f1: 0.0610, qst_f1: 0.0262, em: 0.0068, avg: 0.0339, multirc_loss: 0.6851
+03/16 09:34:00 PM: Evaluate: task multirc, batch 219 (606): ans_f1: 0.0561, qst_f1: 0.0227, em: 0.0118, avg: 0.0339, multirc_loss: 0.6786
+03/16 09:34:11 PM: Evaluate: task multirc, batch 252 (606): ans_f1: 0.0622, qst_f1: 0.0265, em: 0.0102, avg: 0.0362, multirc_loss: 0.6783
+03/16 09:34:21 PM: Evaluate: task multirc, batch 285 (606): ans_f1: 0.0584, qst_f1: 0.0244, em: 0.0089, avg: 0.0336, multirc_loss: 0.6794
+03/16 09:34:32 PM: Evaluate: task multirc, batch 318 (606): ans_f1: 0.0534, qst_f1: 0.0221, em: 0.0100, avg: 0.0317, multirc_loss: 0.6776
+03/16 09:34:42 PM: Evaluate: task multirc, batch 347 (606): ans_f1: 0.0598, qst_f1: 0.0250, em: 0.0074, avg: 0.0336, multirc_loss: 0.6770
+03/16 09:34:53 PM: Evaluate: task multirc, batch 382 (606): ans_f1: 0.0539, qst_f1: 0.0228, em: 0.0067, avg: 0.0303, multirc_loss: 0.6787
+03/16 09:35:03 PM: Evaluate: task multirc, batch 419 (606): ans_f1: 0.0535, qst_f1: 0.0238, em: 0.0060, avg: 0.0298, multirc_loss: 0.6803
+03/16 09:35:14 PM: Evaluate: task multirc, batch 456 (606): ans_f1: 0.0491, qst_f1: 0.0216, em: 0.0068, avg: 0.0279, multirc_loss: 0.6816
+03/16 09:35:25 PM: Evaluate: task multirc, batch 492 (606): ans_f1: 0.0523, qst_f1: 0.0230, em: 0.0063, avg: 0.0293, multirc_loss: 0.6808
+03/16 09:35:35 PM: Evaluate: task multirc, batch 527 (606): ans_f1: 0.0492, qst_f1: 0.0217, em: 0.0060, avg: 0.0276, multirc_loss: 0.6799
+03/16 09:35:46 PM: Evaluate: task multirc, batch 563 (606): ans_f1: 0.0463, qst_f1: 0.0205, em: 0.0056, avg: 0.0260, multirc_loss: 0.6793
+03/16 09:35:56 PM: Evaluate: task multirc, batch 599 (606): ans_f1: 0.0483, qst_f1: 0.0205, em: 0.0053, avg: 0.0268, multirc_loss: 0.6785
+03/16 09:35:59 PM: Updating LR scheduler:
+03/16 09:35:59 PM: 	Best result seen so far for macro_avg: 0.287
+03/16 09:35:59 PM: 	# validation passes without improvement: 0
+03/16 09:35:59 PM: Ran out of early stopping patience. Stopping training.
+03/16 09:35:59 PM: multirc_loss: training: 0.711617 validation: 0.679557
+03/16 09:35:59 PM: macro_avg: validation: 0.026400
+03/16 09:35:59 PM: micro_avg: validation: 0.026400
+03/16 09:35:59 PM: multirc_ans_f1: training: 0.400000 validation: 0.047554
+03/16 09:35:59 PM: multirc_qst_f1: training: 0.155844 validation: 0.020223
+03/16 09:35:59 PM: multirc_em: training: 0.558442 validation: 0.005247
+03/16 09:35:59 PM: multirc_avg: training: 0.479221 validation: 0.026400
+03/16 09:35:59 PM: Global learning rate: 3.75e-05
+03/16 09:35:59 PM: Saving checkpoints to: /home/soujanya/Projects/jiant/jiant-baseline-bert/mtl-multirc
+03/16 09:35:59 PM: Stopped training after 7 validation checks
+03/16 09:35:59 PM: Trained multirc for 70 steps or 0.021 epochs
+03/16 09:35:59 PM: ***** VALIDATION RESULTS *****
+03/16 09:35:59 PM: multirc_avg (for best val pass 1): multirc_loss: 0.69370, macro_avg: 0.28659, micro_avg: 0.28659, multirc_ans_f1: 0.53644, multirc_qst_f1: 0.44125, multirc_em: 0.03673, multirc_avg: 0.28659
+03/16 09:35:59 PM: micro_avg (for best val pass 1): multirc_loss: 0.69370, macro_avg: 0.28659, micro_avg: 0.28659, multirc_ans_f1: 0.53644, multirc_qst_f1: 0.44125, multirc_em: 0.03673, multirc_avg: 0.28659
+03/16 09:35:59 PM: macro_avg (for best val pass 1): multirc_loss: 0.69370, macro_avg: 0.28659, micro_avg: 0.28659, multirc_ans_f1: 0.53644, multirc_qst_f1: 0.44125, multirc_em: 0.03673, multirc_avg: 0.28659
+03/16 09:35:59 PM: Evaluating...
+03/16 09:35:59 PM: Loaded model state from /home/soujanya/Projects/jiant/jiant-baseline-bert/mtl-multirc/multirc/model_state_target_train_val_1.best.th
+03/16 09:35:59 PM: Evaluating on: multirc, split: val
+03/16 09:36:29 PM: 	Task multirc: batch 107
+03/16 09:36:59 PM: 	Task multirc: batch 214
+03/16 09:37:29 PM: 	Task multirc: batch 320
+03/16 09:37:59 PM: 	Task multirc: batch 424
+03/16 09:38:29 PM: 	Task multirc: batch 526
+03/16 09:38:52 PM: Task 'multirc': sorting predictions by 'idx'
+03/16 09:38:52 PM: Finished evaluating on: multirc
+03/16 09:38:52 PM: Writing results for split 'val' to /home/soujanya/Projects/jiant/jiant-baseline-bert/results.tsv
+03/16 09:38:52 PM: micro_avg: 0.287, macro_avg: 0.287, multirc_ans_f1: 0.536, multirc_qst_f1: 0.441, multirc_em: 0.037, multirc_avg: 0.287
+03/16 09:38:52 PM: Done!
