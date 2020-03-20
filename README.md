@@ -61,13 +61,13 @@ input_module = bert-base-cased
 
 python main.py --config_file jiant/config/multirc.conf
 
-To Visualize logs:
+#To Visualize logs:
 
 pip install tensorboard
 
 tensorboard --logdir=${LOG_DIR} 
 
-**Configs to alter stopping criteria
+#Configs to alter stopping criteria
 
 // validation of stopping criteria happens for every 50 steps
 val_interval = 50
