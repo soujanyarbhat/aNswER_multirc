@@ -61,10 +61,33 @@ input_module = bert-base-cased
 
 python main.py --config_file jiant/config/multirc.conf
 
-To Visualize logs:
+#To Visualize logs:
 
 pip install tensorboard
+
 tensorboard --logdir=${LOG_DIR} 
+
+#Configs to alter stopping criteria
+
+// validation of stopping criteria happens for every 50 steps
+
+val_interval = 50
+
+//Stopping criteria
+
+// Option 1: Maximum number of validation checks. Will stop once this limit has been reached.
+// Lets keep this to 2 digit
+
+max_vals = 20
+
+// Option 2: Maximum no of epochs for training, will work only if the value is positive
+
+max_epochs = 10
+
+// Option 3: Minimum learning rate. Training will stop when our explicit LR decay lowers the LR below this point
+
+min_lr = 0.0001
+
 
 REPORT (WIP): 
 
