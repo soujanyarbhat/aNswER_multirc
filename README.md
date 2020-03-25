@@ -1,6 +1,8 @@
 # multi_rc
 Dataset page: https://cogcomp.seas.upenn.edu/multirc/
 
+REPORT (WIP): https://www.overleaf.com/5821917254rswjnrsfhhzy
+
 MultiRC (Multi-Sentence Reading Comprehension) is a dataset of short paragraphs and multi-sentence questions that can be answered from the content of the paragraph.
 
 Approach:
@@ -87,11 +89,4 @@ max_epochs = 10
 // Option 3: Minimum learning rate. Training will stop when our explicit LR decay lowers the LR below this point
 
 min_lr = 0.0001
-
-
-REPORT (WIP): 
-
-https://www.overleaf.com/read/gxckmzynvxnk
-
-
 
