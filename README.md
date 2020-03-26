@@ -55,21 +55,7 @@ exp_name| Name of the current experiment|
 run_name| Name of the run given an experiment|
 
 
-
-
-
-### Approach ###
-1. We pick the SuperGLUE baseline BERT model and understand the code.
-2. We try and improve the model to obtain better scores on the Multi-RC dataset
-3. Research paper(additional models) references- 
-a. Google T5
-b. Facebook RoBERTa
-c. Google BERT
-
-### ISSUES(TBD) ###
-
-
-### PROGRESS TRACK ###
+### STEPS ###
 
 Complete overview of JIANT: https://arxiv.org/pdf/2003.02249.pdf 
 
@@ -129,3 +115,16 @@ eg changes:
 
         tensorboard --logdir=${LOG_DIR} 
 
+
+### Approach ###
+1. Pick the SuperGLUE baseline BERT model and understand/explore the codebase.
+2. Improve the model over baseline scores on the Multi-RC dataset.
+3. Additional model references- 
+a. Google T5
+b. Facebook RoBERTa
+c. Google BERT
+
+### Improvements ###
+1. Exploring/understanding model pitfalls
+2. Increasing the low EM(exact-match) score
+3. Increasing F1-score over baseline results
