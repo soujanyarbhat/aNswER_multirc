@@ -9,7 +9,7 @@ Sample data
 """
 
 """ Change the file name """
-input_file = 'MultiRC_val.jsonl'
+input_file = 'val.jsonl'
 output_file = 'expectedData.jsonl'
 
 with open(input_file) as file:
