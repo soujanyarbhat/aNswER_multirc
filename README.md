@@ -20,7 +20,8 @@ The repo consists of following files/folders:
 3. ***Docs***: Related research papers
 4. ***Topic notes***
 
-##Configurations ##
+## Configurations ##
+
 (subset of configurations from default.conf which we have overriden on custom config files)
 
 Argument| Description| Value(eg:)
@@ -57,7 +58,7 @@ run_name| Name of the run given an experiment|
 
 
 
-###Approach ###
+### Approach ###
 1. We pick the SuperGLUE baseline BERT model and understand the code.
 2. We try and improve the model to obtain better scores on the Multi-RC dataset
 3. Research paper references- 
