@@ -65,11 +65,11 @@ a. Google T5
 b. Facebook RoBERTa
 c. Google BERT
 
-####ISSUES ####
+### ISSUES ###
 
-####TBD ####
+### TBD ###
 
-#### PROGRESS TRACK ####
+### PROGRESS TRACK ###
 
 Complete overview of JIANT: https://arxiv.org/pdf/2003.02249.pdf 
 
@@ -123,7 +123,7 @@ eg changes:
         source user_config.sh; 
         python main.py --config_file jiant/config/multirc.conf
 
-###To Visualize logs:
+### To Visualize logs ###
 
         pip install tensorboard
 
