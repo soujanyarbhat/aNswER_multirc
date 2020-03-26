@@ -61,20 +61,19 @@ run_name| Name of the run given an experiment|
 ### Approach ###
 1. We pick the SuperGLUE baseline BERT model and understand the code.
 2. We try and improve the model to obtain better scores on the Multi-RC dataset
-3. Research paper references- 
+3. Research paper(additional models) references- 
 a. Google T5
 b. Facebook RoBERTa
 c. Google BERT
 
-### ISSUES ###
+### ISSUES(TBD) ###
 
-### TBD ###
 
 ### PROGRESS TRACK ###
 
 Complete overview of JIANT: https://arxiv.org/pdf/2003.02249.pdf 
 
-March 16: Tuned baseline model jiant to execute task 'MultiRC'
+Tuning baseline model jiant to execute task 'MultiRC'
 
 ##Setup steps ##
 
