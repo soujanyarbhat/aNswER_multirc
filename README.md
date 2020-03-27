@@ -125,6 +125,6 @@ b. Facebook RoBERTa
 c. Google BERT
 
 ### Improvements ###
-1. Exploring/understanding model pitfalls
+1. Exploring confidence probabilities
 2. Increasing the low EM(exact-match) score
 3. Increasing F1-score over baseline results
