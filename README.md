@@ -1,7 +1,7 @@
 # MultiRC #
 Dataset page: https://cogcomp.seas.upenn.edu/multirc/
 
-REPORT (WIP): https://www.overleaf.com/5821917254rswjnrsfhhzy
+REPORT (Phase-1): https://www.overleaf.com/5821917254rswjnrsfhhzy
 
 MultiRC (Multi-Sentence Reading Comprehension) is a dataset of short paragraphs and multi-sentence questions that can be answered from the content of the paragraph.
 
