@@ -1,3 +1,12 @@
+# Updates 
+(Apr 2nd)
+- Changed evaluate.py to include logits(for labels 0 and 1) in the output json for validation and test.
+- Added sample json outputs
+
+## To Do
+- Find **confidence from logits** values
+- Figure out the problem points in the predictions
+
 # MultiRC #
 Dataset page: https://cogcomp.seas.upenn.edu/multirc/
 

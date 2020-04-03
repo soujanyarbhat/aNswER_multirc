@@ -42,6 +42,21 @@ def _format_preds(preds):
         raise TypeError(type(preds))
     return cols
 
+def _format_preds(preds,logits):
+    if isinstance(preds, (list, torch.Tensor)):
+        preds = _coerce_list(preds)
+        logits = _coerce_list(logits)
+        assert isinstance(preds, list), "Convert predictions to list!"
+        cols = {"preds": preds, "logits": logits}
+    elif isinstance(preds, dict):
+        cols = {}
+        for k, v in preds.items():
+            cols[f"preds_{k}"] = _coerce_list(v)
+            cols[f"logits_{k}"] = _coerce_list(logits[k])
+    else:
+        raise TypeError(type(preds))
+    return cols
+
 
 def _coerce_list(preds) -> List:
     if isinstance(preds, torch.Tensor):
@@ -118,7 +133,8 @@ def evaluate(
             if "preds" not in out:
                 continue
             out["preds"] = task.handle_preds(out["preds"], batch)
-            cols = _format_preds(out["preds"])
+            cols = _format_preds(out["preds"],out["logits"])
+            # print(out["logits"])
             if task.name in IDX_REQUIRED_TASK_NAMES:
                 assert "idx" in batch, f"'idx' field missing from batches " "for task {task.name}!"
             for field in FIELDS_TO_EXPORT:
@@ -422,12 +438,13 @@ def _write_multirc_preds(
     strict_glue_format: bool = False,
 ):
     """ Write predictions for MultiRC task. """
+    # preds_df.to_csv("predictions.csv")
     preds_file = _get_pred_filename(task.name, pred_dir, split_name, strict_glue_format)
     with open(preds_file, "w", encoding="utf-8") as preds_fh:
         if strict_glue_format:
             par_qst_ans_d = defaultdict(lambda: defaultdict(list))
             for row_idx, row in preds_df.iterrows():
-                ans_d = {"idx": int(row["ans_idx"]), "label": int(row["preds"])}
+                ans_d = {"idx": int(row["ans_idx"]), "label": int(row["preds"]), "logits": row["logits"]}
                 par_qst_ans_d[int(row["psg_idx"])][int(row["qst_idx"])].append(ans_d)
             for par_idx, qst_ans_d in par_qst_ans_d.items():
                 qst_ds = []
