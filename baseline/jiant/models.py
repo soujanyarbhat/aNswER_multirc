@@ -1252,6 +1252,7 @@ class MultiTaskModel(nn.Module):
 
             logits = classifier(inp, inp_mask)
         out["logits"] = logits
+        out["confidence"] = torch.nn.functional.softmax(logits).data
         if "label" in batch:
             out["loss"] = format_output(F.cross_entropy(logits, batch["label"]), self._cuda_device)
 

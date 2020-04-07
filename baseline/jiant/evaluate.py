@@ -42,17 +42,17 @@ def _format_preds(preds):
         raise TypeError(type(preds))
     return cols
 
-def _format_preds(preds,logits):
+def _format_preds(preds, confidence):
     if isinstance(preds, (list, torch.Tensor)):
         preds = _coerce_list(preds)
-        logits = _coerce_list(logits)
+        confidence = _coerce_list(confidence)
         assert isinstance(preds, list), "Convert predictions to list!"
-        cols = {"preds": preds, "logits": logits}
+        cols = {"preds": preds, "confidence": confidence}
     elif isinstance(preds, dict):
         cols = {}
         for k, v in preds.items():
             cols[f"preds_{k}"] = _coerce_list(v)
-            cols[f"logits_{k}"] = _coerce_list(logits[k])
+            cols[f"confidence_{k}"] = _coerce_list(confidence[k])
     else:
         raise TypeError(type(preds))
     return cols
@@ -133,7 +133,7 @@ def evaluate(
             if "preds" not in out:
                 continue
             out["preds"] = task.handle_preds(out["preds"], batch)
-            cols = _format_preds(out["preds"],out["logits"])
+            cols = _format_preds(out["preds"], out["confidence"])
             # print(out["logits"])
             if task.name in IDX_REQUIRED_TASK_NAMES:
                 assert "idx" in batch, f"'idx' field missing from batches " "for task {task.name}!"
@@ -444,7 +444,7 @@ def _write_multirc_preds(
         if strict_glue_format:
             par_qst_ans_d = defaultdict(lambda: defaultdict(list))
             for row_idx, row in preds_df.iterrows():
-                ans_d = {"idx": int(row["ans_idx"]), "label": int(row["preds"]), "logits": row["logits"]}
+                ans_d = {"idx": int(row["ans_idx"]), "label": int(row["preds"]), "confidence": row["confidence"]}
                 par_qst_ans_d[int(row["psg_idx"])][int(row["qst_idx"])].append(ans_d)
             for par_idx, qst_ans_d in par_qst_ans_d.items():
                 qst_ds = []
