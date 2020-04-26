@@ -3,7 +3,7 @@
 - Added sample json outputs
 - Added files for best model performance (Accuracy- 58%)
 - Analysed confidence probabilities: Model is very underconfident and most options are labelled as TRUE(1). 
-![confidence analysis](https://imgur.com/undefined)
+![confidence analysis](https://imgur.com/xGWsrdN)
 - Contacted the developers for gaining information on the performance, seems like they don't know how it degraded when they updated the toolkit to incorporate new Allen AI and Huggingface module versions(Issue thread- https://github.com/nyu-mll/jiant/issues/1052).
 - After manually checking results, it is observed that a particular option with any resemblance to a portion of the paragraph is marked TRUE without taking the question into context. 
 - Researched multi-hop approaches such as Multi-hop Question Answering via Reasoning Chains[Chen et. al. 2019](https://arxiv.org/pdf/1910.02610.pdf) that produces reasoning which seems a logical solution to trim down the paragraph into the most relevant for the particular question. This gave us the following idea.
@@ -16,7 +16,9 @@
 # MultiRC #
 Dataset page: https://cogcomp.seas.upenn.edu/multirc/
 
-REPORT (Phase-1): https://www.overleaf.com/5821917254rswjnrsfhhzy
+REPORT : https://www.overleaf.com/5821917254rswjnrsfhhzy
+
+PROGRESS Slides : https://docs.google.com/presentation/d/1Z8hRQzUXM6ZboHXiayK_s2NtFMi9Ek0osfTT1MWxj9s/edit?usp=sharing
 
 MultiRC (Multi-Sentence Reading Comprehension) is a dataset of short paragraphs and multi-sentence questions that can be answered from the content of the paragraph.
 
