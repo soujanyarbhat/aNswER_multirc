@@ -1,0 +1,50 @@
+## USING BERT QA FINE-TUNED ON SQUAD ##
+
+# Loading fine-tuned BERT model
+In [1]: from transformers import BertForQuestionAnswering
+model = BertForQuestionAnswering.from_pretrained('bert-large-uncased-whole-word-masking-finetuned-squad')
+
+# Loading Tokenizer
+In [2]: from transformers import BertTokenizer
+tokenizer = BertTokenizer.from_pretrained('bert-large-uncased-whole-word-masking-finetuned-squad')
+
+# Sample paragraph and question
+In [3]: para = '(CNN) -- Ralph Mata was an internal affairs lieutenant for the Miami-Dade Police Department, working in the division that investigates allegations of wrongdoing by cops. Outside the office, authorities allege that the 45-
+   ...: year-old longtime officer worked with a drug trafficking organization to help plan a murder plot and get guns. A criminal complaint unsealed in U.S. District Court in New Jersey Tuesday accuses Mata, also known as "The Milk Man,"
+   ...:  of using his role as a police officer to help the drug trafficking organization in exchange for money and gifts, including a Rolex watch. In one instance, the complaint alleges, Mata arranged to pay two assassins to kill rival d
+   ...: rug dealers. The killers would pose as cops, pulling over their targets before shooting them, according to the complaint. "Ultimately, the (organization) decided not to move forward with the murder plot, but Mata still received a
+   ...:  payment for setting up the meetings," federal prosecutors said in a statement. The complaint also alleges that Mata used his police badge to purchase weapons for drug traffickers. Mata, according to the complaint, then used cont
+   ...: acts at the airport to transport the weapons in his carry-on luggage on trips from Miami to the Dominican Republic. Court documents released by investigators do not specify the name of the drug trafficking organization with which
+   ...:  Mata allegedly conspired but says the organization has been importing narcotics from places such as Ecuador and the Dominican Republic by hiding them "inside shipping containers containing pallets of produce, including bananas."
+   ...:  The organization "has been distributing narcotics in New Jersey and elsewhere," the complaint says. '
+
+In [4]: question='What is the name of the officer?'
+
+## Tokenized input, Created segment IDs ##
+
+In [14]: start_scores, end_scores = model(torch.tensor([input_ids]), token_type_ids=torch.tensor([segment_ids])) 
+
+In [17]: answer_start = torch.argmax(start_scores) 
+
+In [18]: answer_end = torch.argmax(end_scores)
+
+In [19]: answer = ' '.join(tokens[answer_start:answer_end+1]) 
+
+In [22]: print(answer)
+ralph mata
+
+# Returns correct result, but only a partial answer(second answer- "the milk man") ##
+
+# Now we check top 4 scores since the dataset uses 2-4 sentences for every question
+
+In [27]: top_start_val, top_start_idx = torch.topk(start_scores, 4)
+In [30]: top_end_val, top_end_idx = torch.topk(end_scores, 4)
+
+# These indices return the following results
+[CLS]
+ralph mata
+45
+department
+
+# The expected second valid answer did not exist
+# Also the ordering of argmax of start and indices scores would require processing because of arbitrary oredering(end cab be before start)
