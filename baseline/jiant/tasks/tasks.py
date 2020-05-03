@@ -2022,6 +2022,69 @@ class QNLITask(PairClassificationTask):
             + self.val_data_text[1]
         )
         log.info("\tFinished loading QNLI.")
+        
+@register_task("multee", rel_path="MULTEE/")
+class MulteeTask(PairClassificationTask):
+    """Task class for Multirc NLI"""
+
+    def __init__(self, path, max_seq_len, name, **kw):
+        super(MulteeTask, self).__init__(name, n_classes=2, **kw)
+        self.path = path
+        self.max_seq_len = max_seq_len
+
+        self.train_data_text = None
+        self.val_data_text = None
+        self.test_data_text = None
+
+    def load_data(self):
+        """ Process the datasets located at path. """
+        targ_map = {False: 0, True: 1}
+
+        def _load_jsonl(data_file):
+            data = [json.loads(d) for d in open(data_file, encoding="utf-8")]
+            sent1s, sent2s, trgs, idxs = [], [], [], []
+            for example in data:
+                premise = " ".join(example["premises"])
+                sent = tokenize_and_truncate(
+                    self._tokenizer_name, premise, self.max_seq_len
+                )
+                for hypothesis in example["hypotheses"]:
+                    sent1s.append(
+                        sent
+                    )
+                    sent2s.append(
+                        tokenize_and_truncate(
+                            self._tokenizer_name, hypothesis, self.max_seq_len
+                        )
+                    )
+                idxs += example["idx"]
+                trg = [targ_map[entailment] for entailment in example["entailments"]]
+                trgs += trg
+
+            return [sent1s, sent2s, trgs, idxs]
+
+        self.train_data_text = _load_jsonl(os.path.join(self.path, "train.jsonl"))
+        self.val_data_text = _load_jsonl(os.path.join(self.path, "dev.jsonl"))
+        self.test_data_text = _load_jsonl(os.path.join(self.path, "test.jsonl"))
+
+        self.sentences = (
+            self.train_data_text[0]
+            + self.train_data_text[1]
+            + self.val_data_text[0]
+            + self.val_data_text[1]
+        )
+        log.info("\tFinished loading Multee.")
+
+    def update_metrics(self, out, batch):
+        logits = out["logits"]
+        labels = batch["labels"]
+        for scorer in self.get_scorers():
+            scorer(logits, labels)
+
+    def get_metrics(self, reset=False):
+        '''Get metrics specific to the task'''
+        f1 = self.f1_scorer.get_metric(reset)[2]
+        return {'f1': f1}
 
 
 @register_task("wnli", rel_path="WNLI/")
