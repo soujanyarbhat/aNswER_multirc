@@ -2031,7 +2031,8 @@ class MulteeTask(PairClassificationTask):
         super(MulteeTask, self).__init__(name, n_classes=2, **kw)
         self.path = path
         self.max_seq_len = max_seq_len
-
+        self.scorer2 = F1Measure(1)
+        self.scorers = [self.scorer1, self.scorer2]
         self.train_data_text = None
         self.val_data_text = None
         self.test_data_text = None
@@ -2075,16 +2076,17 @@ class MulteeTask(PairClassificationTask):
         )
         log.info("\tFinished loading Multee.")
 
-    def update_metrics(self, out, batch):
-        logits = out["logits"]
-        labels = batch["labels"]
-        for scorer in self.get_scorers():
-            scorer(logits, labels)
-
     def get_metrics(self, reset=False):
-        '''Get metrics specific to the task'''
-        f1 = self.f1_scorer.get_metric(reset)[2]
-        return {'f1': f1}
+        """Get metrics specific to the task"""
+        acc = self.scorer1.get_metric(reset)
+        pcs, rcl, f1 = self.scorer2.get_metric(reset)
+        return {
+            "acc_f1": (acc + f1) / 2,
+            "accuracy": acc,
+            "f1": f1,
+            "precision": pcs,
+            "recall": rcl,
+        }
 
 
 @register_task("wnli", rel_path="WNLI/")
