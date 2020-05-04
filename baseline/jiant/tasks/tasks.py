@@ -2068,12 +2068,7 @@ class MulteeTask(PairClassificationTask):
         self.val_data_text = _load_jsonl(os.path.join(self.path, "dev.jsonl"))
         self.test_data_text = _load_jsonl(os.path.join(self.path, "test.jsonl"))
 
-        self.sentences = (
-            self.train_data_text[0]
-            + self.train_data_text[1]
-            + self.val_data_text[0]
-            + self.val_data_text[1]
-        )
+        self.sentences = self.train_data_text[0] + self.val_data_text[0]
         log.info("\tFinished loading Multee.")
 
     def get_metrics(self, reset=False):
@@ -2081,9 +2076,8 @@ class MulteeTask(PairClassificationTask):
         acc = self.scorer1.get_metric(reset)
         pcs, rcl, f1 = self.scorer2.get_metric(reset)
         return {
-            "acc_f1": (acc + f1) / 2,
             "accuracy": acc,
-            "f1": f1,
+            "f1_ans": f1,
             "precision": pcs,
             "recall": rcl,
         }
