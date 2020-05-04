@@ -97,13 +97,6 @@ Tuning baseline model jiant to execute task 'MultiRC'
         conda activate jiant
 
 - Install remaining packages:
-~~pip install torchvision 
-pip install allennlp
-pip install jsondiff
-pip install -U sacremoses
-pip install pyhocon
-pip install transformers
-pip install python-Levenshtein~~
 
 - Download dataset: 
 
