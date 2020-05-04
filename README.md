@@ -42,6 +42,8 @@ The repo consists of following files/folders:
 2. ***dataset***: The train and dev datasets
 3. ***Docs***: Related research papers
 4. ***Topic notes***
+5. ***experiments***: Details of expermimental analysis of a different approach.
+6. ***MultiRC_NER***: An NER-based QA approach for MultiRC dataset. Required notebooks and data.
 
 ## Configurations ##
 
