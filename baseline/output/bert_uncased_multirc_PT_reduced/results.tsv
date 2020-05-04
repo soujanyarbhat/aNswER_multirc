@@ -1,1 +1,0 @@
-bert_uncased_multirc	micro_avg: 0.300, macro_avg: 0.300, multirc_ans_f1: 0.591, multirc_qst_f1: 0.563, multirc_em: 0.009, multirc_avg: 0.300

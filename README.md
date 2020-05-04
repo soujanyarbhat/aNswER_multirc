@@ -1,16 +1,30 @@
 # Updates 
-(Apr 6th)
 - Changed evaluate.py to include softmax(logits) i.e confidence (for labels 0 and 1) in the output json for validation and test.
 - Added sample json outputs
+- Added files for best model performance (Accuracy- 58%)
+- Analysed confidence probabilities: Model is very underconfident and most options are labelled as TRUE(1). 
+[confidence-analysis](https://imgur.com/xGWsrdN)
+- Contacted the developers for gaining information on the performance, seems like they don't know how it degraded when they updated the toolkit to incorporate new Allen AI and Huggingface module versions(Issue thread- https://github.com/nyu-mll/jiant/issues/1052).
+- After manually checking results, it is observed that a particular option with any resemblance to a portion of the paragraph is marked TRUE without taking the question into context. 
+- Researched multi-hop approaches such as Multi-hop Question Answering via Reasoning Chains[Chen et. al. 2019](https://arxiv.org/pdf/1910.02610.pdf) that produces reasoning which seems a logical solution to trim down the paragraph into the most relevant for the particular question. This gave us the following idea.
+- Analysed BERT-QA(fine-tuned on SQuAd) and other fine-tuned BERT models(on STS-B, QNLI) on MultiRC dataset, details in experiments/ folder. While it was able to give partially correct answers, it's single span approach failed in answering multihop questions(as expected). One important observation- frozen BERT without any pre-training gave approximately the same results. This highlights the challenging characteristics of the dataset and provides reason for the low-confident model, as it could not learn or find patterns necessary to answer the questions.
+- Implemented approach in Repurposing Entailment for Multi-Hop Question Answering Tasks[Trivedi et. al. 2019](https://arxiv.org/pdf/1904.09380v1.pdf)(pre-trained on QNLI). This entailment approach gave the best-yet results of F1 score:63. The approach of formulating a hypothesis as the answer based on context to the question and transforming the dataset gave us ideas for one of our other main approaches, NER-based QA, also recommended by our project mentor. This entailment approach was further analysed on confidence metrics.
+- Added task into the baseline model for the above approach under branch "soujanya/"
+- FINAL APPROACH = Implemented Named-entity-recognition based approach. Idea- Using the concept of BIO tagging to train the model on correct tags for the correct answer and vice-versa for the wrong answers. Pre-requisite- Tranformed the MultiRC dataset into an NER dataset with different tags, one each for- paragraph, question, correct and incorrect answer.
+- Added colab notebooks with the required data for the above approach in the repository under MultiRC_NER/
 
 ## To Do
-- ~~Find **confidence from logits** values~~
-- Figure out the problem points in the predictions
+- Analyse the implementation of Entailment-based approach in terms of confidence and micro-analysis on samples of data.
+- Analyse the F1 score and confidence of the NER based QA model.
 
 # MultiRC #
 Dataset page: https://cogcomp.seas.upenn.edu/multirc/
 
-REPORT (Phase-1): https://www.overleaf.com/5821917254rswjnrsfhhzy
+Analysis: https://docs.google.com/spreadsheets/d/1zLZw-e5Anm17ah5RsUGOAzEJpmqOGGp-nA_72XfQN-E/edit?usp=sharing
+
+REPORT : https://www.overleaf.com/read/zfbzkqjzxwrb
+
+PROGRESS Slides : https://docs.google.com/presentation/d/1Z8hRQzUXM6ZboHXiayK_s2NtFMi9Ek0osfTT1MWxj9s/edit?usp=sharing
 
 MultiRC (Multi-Sentence Reading Comprehension) is a dataset of short paragraphs and multi-sentence questions that can be answered from the content of the paragraph.
 
@@ -28,6 +42,8 @@ The repo consists of following files/folders:
 2. ***dataset***: The train and dev datasets
 3. ***Docs***: Related research papers
 4. ***Topic notes***
+5. ***experiments***: Details of expermimental analysis of a different approach.
+6. ***MultiRC_NER***: An NER-based QA approach for MultiRC dataset. Required notebooks and data.
 
 ## Configurations ##
 
