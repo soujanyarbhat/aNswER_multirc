@@ -56,7 +56,7 @@ The repo consists of following files/folders:
     - preprocess_multirc.py: convert the given MultiRC data from original format to the NLI format
     - lib
 
-## Configurations ##
+## JIANT Configurations ##
 
 (subset of configurations from default.conf which we have overriden on custom config files)
 
@@ -91,7 +91,7 @@ exp_name| Name of the current experiment|
 run_name| Name of the run given an experiment|
 
 
-### STEPS ###
+### JIANT STEPS ###
 
 Complete overview of JIANT: https://arxiv.org/pdf/2003.02249.pdf 
 
@@ -138,14 +138,17 @@ eg changes:
         source user_config.sh; 
         python main.py --config_file jiant/config/multirc.conf
 
-### To Visualize logs ###
+### JIANT toolkit steps to Visualize logs ###
 
         pip install tensorboard
 
         tensorboard --logdir=${LOG_DIR} 
+### NER model ###
 
+- Convert the MultiRC dataset into NER format using the parser.py
+- Run training notebook and evaluation notebook (replace the folder path for the trained model and outputs in these notebooks)
 
-### Approach ###
+### Project Approach ###
 1. Pick the SuperGLUE baseline BERT model and understand/explore the codebase.
 2. Improve the model over baseline scores on the Multi-RC dataset.
 3. Additional model references- 
