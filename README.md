@@ -1,24 +1,3 @@
-# Folder Structure
-
- - MutliRC_BERT_QA (BERT QA model)
-    - exploratory_analysis: has code and analysis related to BERT QA model
- - MultiRC_NER (NER model - best so far)
-    - data: tokenized data
-    - evaluations: output prediction files
-    - models: Trained model, config file and vocab
-    - MultiRC_NER notebook: code for training the NER model on training data
-    - MultiRC_NER_eval: code for evaluating the trained NER model on evaluation data
-    - parser.py: converts the given MultiRC data from original format to the NER format
-- MultiRC_NLI (NLI model)
-    - preprocess_multirc.py: convert the given MultiRC data from original format to the NLI format
-    - lib:
-- baseline (JIANT toolkit)
-- dataset
-    - contains the data downloaded from MultiRC
-- docs
-    - contains collection of research papers we referenced
- 
-
 # Updates 
 - Changed evaluate.py to include softmax(logits) i.e confidence (for labels 0 and 1) in the output json for validation and test.
 - Added sample json outputs
@@ -60,11 +39,22 @@ The repo consists of following files/folders:
     3. **jiant/config**: contains the default and custom configurations files.
     4. **jiant**: Implementation scripts and related modules (hugging face, allennlp).
     5. **user_config.sh**: contains the default environment variables(user configurations) like project base directory path, dataset path
-2. ***dataset***: The train and dev datasets
+2. ***dataset***: The MultiRC train and dev datasets
 3. ***Docs***: Related research papers
 4. ***Topic notes***
 5. ***experiments***: Details of expermimental analysis of a different approach.
 6. ***MultiRC_NER***: An NER-based QA approach for MultiRC dataset. Required notebooks and data.
+    - data: tokenized data
+    - evaluations: output prediction files
+    - models: Trained model, config file and vocab
+    - MultiRC_NER notebook: code for training the NER model on training data
+    - MultiRC_NER_eval: code for evaluating the trained NER model on evaluation data
+    - parser.py: converts the given MultiRC data from original format to the NER format
+ 7. ***MutliRC_BERT_QA***: BERT QA model
+    - exploratory_analysis: has code and analysis related to BERT QA model
+ 8. ***MultiRC_NLI***: NLI model
+    - preprocess_multirc.py: convert the given MultiRC data from original format to the NLI format
+    - lib
 
 ## Configurations ##
 
