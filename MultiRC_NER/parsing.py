@@ -1,5 +1,6 @@
 """
 Name: Rohit Roongta
+This file converts the multiRC QA dataset into NER format
 """
 
 import json
