@@ -15,7 +15,6 @@
 
 ## To Do
 - Analyse the implementation of Entailment-based approach in terms of confidence and micro-analysis on samples of data.
-- Analyse the F1 score and confidence of the NER based QA model.
 
 # MultiRC #
 Dataset page: https://cogcomp.seas.upenn.edu/multirc/
