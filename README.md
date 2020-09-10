@@ -1,16 +1,4 @@
-# Updates 
-- Changed evaluate.py to include softmax(logits) i.e confidence (for labels 0 and 1) in the output json for validation and test.
-- Added sample json outputs
-- Added files for best model performance (Accuracy- 58%)
-- Analysed confidence probabilities: Model is very underconfident and most options are labelled as TRUE(1). 
-[confidence-analysis](https://imgur.com/xGWsrdN)
-- Contacted the developers for gaining information on the performance, seems like they don't know how it degraded when they updated the toolkit to incorporate new Allen AI and Huggingface module versions(Issue thread- https://github.com/nyu-mll/jiant/issues/1052).
-- After manually checking results, it is observed that a particular option with any resemblance to a portion of the paragraph is marked TRUE without taking the question into context. 
-- Researched multi-hop approaches such as Multi-hop Question Answering via Reasoning Chains[Chen et. al. 2019](https://arxiv.org/pdf/1910.02610.pdf) that produces reasoning which seems a logical solution to trim down the paragraph into the most relevant for the particular question. This gave us the following idea.
-- Analysed BERT-QA(fine-tuned on SQuAd) and other fine-tuned BERT models(on STS-B, QNLI) on MultiRC dataset, details in experiments/ folder. While it was able to give partially correct answers, it's single span approach failed in answering multihop questions(as expected). One important observation- frozen BERT without any pre-training gave approximately the same results. This highlights the challenging characteristics of the dataset and provides reason for the low-confident model, as it could not learn or find patterns necessary to answer the questions. Added python script in "MultiRC_BERT_QA/".
-- Implemented approach in Repurposing Entailment for Multi-Hop Question Answering Tasks[Trivedi et. al. 2019](https://arxiv.org/pdf/1904.09380v1.pdf)(pre-trained on QNLI). This entailment approach gave the best-yet results of F1 score:63. The approach of formulating a hypothesis as the answer based on context to the question and transforming the dataset gave us ideas for one of our other main approaches, NER-based QA, also recommended by our project mentor. This entailment approach was further analysed on confidence metrics.
-- Added task into the baseline model for the above approach and dataset transformation script under branch "MultiRC_NLI/"
-- FINAL APPROACH = Implemented Named-entity-recognition based approach. Idea- Using the concept of BIO tagging to train the model on correct tags for the correct answer and vice-versa for the wrong answers. Pre-requisite- Tranformed the MultiRC dataset into an NER dataset with different tags, one each for- paragraph, question, correct and incorrect answer.
+Implemented Named-entity-recognition based approach. Idea- Using the concept of BIO tagging to train the model on correct tags for the correct answer and vice-versa for the wrong answers. Pre-requisite- Tranformed the MultiRC dataset into an NER dataset with different tags, one each for- paragraph, question, correct and incorrect answer.
 - Added colab notebooks with the required data for the above approach in the repository under MultiRC_NER/
 
 ## To Do
@@ -159,3 +147,16 @@ c. Google BERT
 1. Exploring confidence probabilities
 2. Increasing the low EM(exact-match) score
 3. Increasing F1-score over baseline results
+
+#### Updates 
+- Changed evaluate.py to include softmax(logits) i.e confidence (for labels 0 and 1) in the output json for validation and test.
+- Added sample json outputs
+- Added files for best model performance (Accuracy- 58%)
+- Analysed confidence probabilities: Model is very underconfident and most options are labelled as TRUE(1). 
+[confidence-analysis](https://imgur.com/xGWsrdN)
+- Contacted the developers for gaining information on the performance, seems like they don't know how it degraded when they updated the toolkit to incorporate new Allen AI and Huggingface module versions(Issue thread- https://github.com/nyu-mll/jiant/issues/1052).
+- After manually checking results, it is observed that a particular option with any resemblance to a portion of the paragraph is marked TRUE without taking the question into context. 
+- Researched multi-hop approaches such as Multi-hop Question Answering via Reasoning Chains[Chen et. al. 2019](https://arxiv.org/pdf/1910.02610.pdf) that produces reasoning which seems a logical solution to trim down the paragraph into the most relevant for the particular question. This gave us the following idea.
+- Analysed BERT-QA(fine-tuned on SQuAd) and other fine-tuned BERT models(on STS-B, QNLI) on MultiRC dataset, details in experiments/ folder. While it was able to give partially correct answers, it's single span approach failed in answering multihop questions(as expected). One important observation- frozen BERT without any pre-training gave approximately the same results. This highlights the challenging characteristics of the dataset and provides reason for the low-confident model, as it could not learn or find patterns necessary to answer the questions. Added python script in "MultiRC_BERT_QA/".
+- Implemented approach in Repurposing Entailment for Multi-Hop Question Answering Tasks[Trivedi et. al. 2019](https://arxiv.org/pdf/1904.09380v1.pdf)(pre-trained on QNLI). This entailment approach gave the best-yet results of F1 score:63. The approach of formulating a hypothesis as the answer based on context to the question and transforming the dataset gave us ideas for one of our other main approaches, NER-based QA, also recommended by our project mentor. This entailment approach was further analysed on confidence metrics.
+- Added task into the baseline model for the above approach and dataset transformation script under branch "MultiRC_NLI/"
